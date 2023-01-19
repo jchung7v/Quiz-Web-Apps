@@ -9,7 +9,7 @@ List team members and/or short bio's here...
 
 * Hello, my name is Juan Chung. I am excited to start new project!
 * Hi, I am Armaan and I am excited for this class because we get to tackle an actual problem and not a made up one.
-* ...Ruben Gill, I like music. 
+* Hi, Ruben Gill, I like music and am excited to work on you all to make this project. 
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
