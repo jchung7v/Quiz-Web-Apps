@@ -1,1 +1,54 @@
+/* This ensures padding does not affect the final computed width of an element */
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
 
+html, body {
+    height: 100%;
+    background-color: bisque;
+}
+
+div.menu-top {
+  height: 80px;
+  font-size: 18pt;
+}
+
+div.range-box {
+  height: 30px;
+  background: lightgreen;
+  border-radius: 25px;
+}
+
+div.image-box {
+  height: 250px;
+  background: lightblue;
+  border-radius: 25px;
+}
+
+div.text-box {
+  height: auto;
+  font-size: 18pt;
+  line-height: 30pt;
+}
+
+div.answers {
+  height: 300px;
+}
+
+span.answers {
+  height: 50px;
+  background: lightcyan;
+  border-radius: 10px;
+}
+
+div.fixed-bottom-box {
+  height: 100px;
+  background: white;
+
+}
+
+button.submit-btn {
+  height: 50px;
+  background: lightseagreen;
+  border-radius: 10px;
+}
