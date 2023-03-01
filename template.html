@@ -38,16 +38,30 @@
         </div>
       </div>
 
-      <div class="mt-3 d-flex flex-row range-box">
-        <span class="col-12">Range</span>
+      <div class="mt-3 d-flex flex-row progress-bar-box align-items-center">
+        <div class="col-12 progress">
+          <div
+            class="progress-bar w-75"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+          ></div>
+        </div>
       </div>
 
       <div class="mt-2 d-flex flex-row image-box">
-        <span class="col-12">Image</span>
+        <span class="col-12">
+          <img
+            id="dog-img-01"
+            src="./images/dog-in-winter_NL.webp"
+            alt="dog-in-the-winter"
+          />
+        </span>
       </div>
 
       <div
-        class="mt-2 px-2 d-flex flex-row text-center align-items-center text-box"
+        class="mt-2 px-2 d-flex flex-row text-center align-items-center question-box"
       >
         <span class="col-12">What is an optimal temperature for a dog?</span>
       </div>
@@ -55,16 +69,28 @@
       <hr />
 
       <div class="d-flex flex-column justify-content-around answers">
-        <span class="answers">answer01</span>
-        <span class="answers">answer02</span>
-        <span class="answers">answer03</span>
-        <span class="answers">answer04</span>
-        <span class="answers">answer05</span>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          25°C
+        </button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          30°C
+        </button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          10°C
+        </button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block">
+          5°C
+        </button>
       </div>
     </div>
 
     <div class="container text-center fixed-bottom fixed-bottom-box">
-      <button class="submit-btn">Submit</button>
+      <button
+        type="button"
+        class="mt-3 btn btn-primary btn-lg btn-block submit-btn"
+      >
+        Submit Answer
+      </button>
     </div>
 
     <!---------------------------------------------->
