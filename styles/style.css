@@ -69,3 +69,18 @@ button.submit-btn {
   height: 50px;
   border-radius: 10px;
 }
+
+.container-nav {
+  background-color: aqua;
+
+}
+
+.navbar-brand-logo {
+  width: 80;
+}
+
+.btn-group {
+  display: flex;
+  margin-top: 100%;
+  justify-content:end;
+}
