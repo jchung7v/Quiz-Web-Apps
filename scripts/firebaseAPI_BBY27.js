@@ -2,12 +2,12 @@
 //  Your web app's Firebase configuration
 //----------------------------------------
 var firebaseConfig = {
-    apiKey: "AIzaSyAIjw0wRTo--KdMQZ0ZhYAvFtLLvKU6c2o",
-    authDomain: "comp1800-5217a.firebaseapp.com",
-    projectId: "comp1800-5217a",
-    storageBucket: "comp1800-5217a.appspot.com",
-    messagingSenderId: "287908641331",
-    appId: "1:287908641331:web:32459abde4dcec081fc146"
+  apiKey: "AIzaSyChvVe9aUrZaPiwNiY3kiMCP6LP64qicoE",
+  authDomain: "tempeture-de483.firebaseapp.com",
+  projectId: "tempeture-de483",
+  storageBucket: "tempeture-de483.appspot.com",
+  messagingSenderId: "203803474565",
+  appId: "1:203803474565:web:508a7c9ee2fcf4f63847ec"
 };
 
 //--------------------------------------------
