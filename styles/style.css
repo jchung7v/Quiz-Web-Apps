@@ -6,7 +6,6 @@
 html,
 body {
   height: 100%;
- 
 }
 
 /* ---------------------- */
@@ -84,7 +83,6 @@ button.submit-btn {
   margin-top: 100%;
   justify-content:end;
 }
-
 footer {
   display: flex;
   justify-content: space-between;
