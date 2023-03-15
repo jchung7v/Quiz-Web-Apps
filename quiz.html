@@ -44,26 +44,33 @@
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
   <body>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
-    <div class="container">
-      <div class="pt-5 d-flex flex-row align-items-center menu-top">
-        <div class="col-2">7/10</div>
-        <div class="col-2"></div>
-        <div class="col-4 text-center">Questions</div>
-        <div class="col-2"></div>
-        <div class="col-2 text-end">
-          <img id="menu-kebab" src="./images/menu-kebab.svg" alt="menu" />
-      </div>
+
+    <div class="container" id="start-btn">
+      <button type="button" class="btn btn-primary btn-lg btn-block">
+        Start Game
+      </button>
     </div>
 
-    <div class="mt-3 d-flex flex-row progress-bar-box align-items-center">
-        <div class="col-12 progress">
+    <div class="quiz-container hide" id="quiz-container">
+      <div
+        class="container pt-3 d-flex flex-row justify-content-between menu-top"
+      >
+        <div class="">00/00</div>
+        <div class="">Questions</div>
+        <div class="">
+          <img id="menu-kebab" src="./images/menu-kebab.svg" alt="menu" />
+        </div>
+      </div>
+
+      <div class="container mt-3 progress-bar-box">
+        <div class="progress">
           <div
             class="progress-bar w-75"
             role="progressbar"
@@ -72,72 +79,110 @@
             aria-valuemax="100"
           ></div>
         </div>
-    </div>
-    
-    <div id="answer-goes-here">
+      </div>
 
-    </div>
+      <div
+        class="container mt-4 d-flex flex-row justify-content-center"
+        id="image-container"
+      >
+        <img
+          id="dog-img-01"
+          class="img-fluid"
+          src="./images/dog-in-winter_NL.webp"
+          alt="dog-in-the-winter"
+        />
+      </div>
 
-    <template id="quizTemplate">
-          <div class="mt-2 d-flex flex-row image-box">
-            <span class="col-12">
-              <img
-                id="dog-img-01"
-                src="./images/dog-in-winter_NL.webp"
-                alt="dog-in-the-winter"
-              />
-            </span>
-          </div>
-          <div class="mt-2 px-2 d-flex flex-row text-center align-items-center question-box">
-            <span class="col-12 question">What is an optimal temperature for a dog?</span>
-          </div>
-          <hr />
-          <div class="d-flex flex-column justify-content-around answers">
-            <button type="button" class="btn btn-secondary btn-lg btn-block choice01">
-              25°C
-            </button>
-            <button type="button" class="btn btn-secondary btn-lg btn-block choice02">
-              30°C
-            </button>
-            <button type="button" class="btn btn-secondary btn-lg btn-block choice03">
-              10°C
-            </button>
-            <button type="button" class="btn btn-secondary btn-lg btn-block choice04">
-              5°C
-            </button>
-          </div>
-        </div>
-    </template>
+      <!-- <div id="answer-goes-here"> -->
 
+      <!-- <template class="d-flex" id="quizTemplate"> -->
 
-    <!-- Button trigger modal -->
-    <div class="container text-center fixed-bottom fixed-bottom-box">
-      <button type="button" class="mt-3 btn btn-primary btn-lg btn-block submit-btn" id="submitBtn">
-        Submit Answer
-      </button>
-    </div>
-  
-    <!-- Modal -->
-    <div class="modal fade" id="rightAnswerModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+      <div
+        class="container mt-2 px-2 d-flex flex-row justify-content-center"
+        id="question-container"
+      >
+        <span class="question" id="question">Question</span>
+      </div>
+
+      <hr />
+
+      <div class="container d-flex flex-column answers" id="answer-buttons">
+        <button
+          type="button"
+          class="btn btn-lg btn-primary answer"
+          id="answer-btn"
+        >
+          Answer01
+        </button>
+        <button
+          type="button"
+          class="btn mt-3 btn-lg btn-primary answer"
+          id="answer-btn"
+        >
+          Answer02
+        </button>
+        <button
+          type="button"
+          class="btn mt-3 btn-lg btn-primary answer"
+          id="answer-btn"
+        >
+          Answer03
+        </button>
+        <button
+          type="button"
+          class="btn mt-3 btn-lg btn-primary answer"
+          id="answer-btn"
+        >
+          Answer04
+        </button>
+      </div>
+      <!-- </template> -->
+
+      <!-- Button trigger modal -->
+      <div
+        class="container d-flex justify-content-center fixed-bottom fixed-bottom-box"
+      >
+        <button
+          type="submit"
+          value="Submit"
+          class="mt-3 btn btn-primary btn-lg btn-block submit-btn"
+          id="submitBtn"
+        >
+          Submit Answer
+        </button>
+      </div>
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="rightAnswerModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        style="display: block"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <!-- <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
-              <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button> -->
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> -->
+            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button> -->
             <!-- </div> -->
-            <div class="modal-body">
-              Well Done! You earned 50,000 points!
-            </div>
+            <div class="modal-body">Well Done! You earned 50,000 points!</div>
             <!-- <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div> -->
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div> -->
           </div>
         </div>
       </div>
-      <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+      <div
+        class="modal-backdrop fade show"
+        id="backdrop"
+        style="display: none"
+      ></div>
+    </div>
 
     <!-- our own navbar goes here -->
     <!-- <nav id="navbarPlaceholder"></nav> -->
