@@ -22,7 +22,7 @@ let questions = [
     a: "Wrong",
     b: "Wrong",
     c: "Correct",
-    correct: "a",
+    correct: "c",
   },
 ];
 // retrive the questions from Firestore and shuffle them randomly
@@ -33,10 +33,12 @@ let questions = [
 
 const startButton = document.getElementById("start-btn"); // confirmed
 
-const quizElement = document.getElementById("quiz-container");
+const quizContainer = document.getElementById("quiz-container");
 const answerElements = document.querySelectorAll(".answer");
-const questionElement = document.getElementById("question-container"); //confirmed
+const questionContainer = document.getElementById("question-container"); //confirmed
 const submitButton = document.getElementById("submit-btn"); //confirmed
+const scoreContainer = document.getElementById("score-container");
+const scoreElement = document.getElementById("score");
 
 const a_text = document.getElementById("a_text"); // confirmed
 const b_text = document.getElementById("b_text"); // confirmed
@@ -50,109 +52,155 @@ const answerButtonsElement = document.getElementById("answer-container");
 const progress = document.getElementById("progress");
 
 
-const questionsRef = db.collection("questions"); //confirmed
+// const questionsRef = db.collection("questions"); //confirmed
 
 
 const lastQuestion = questions.length - 1;
 let currentQuestion = 0;
+let currentProgress = 0;
 let count = 0;
 let score = 0;
 
+// startButton.addEventListener("click", startQuiz);
+startQuiz()
+
+// Start quiz
+// render quiz > render progress bar > check answer
+function startQuiz() {
+  console.log("Game has started");
+  // startElement.style.display = "none";
+  renderQuiz();
+  // quizContainer.style.display = "block";
+  renderProgress();
+  // renderCounter();
+  // timer = setInterval(renderCounter, 1000);
+}
 
 function renderQuiz() {
-
   deselectAnswers()
-
   let q = questions[currentQuestion];
-
-  questionElement.innerHTML = "<p>" + q.question + "</p>";
+  questionContainer.innerHTML = "<p>" + q.question + "</p>";
   imageElement.innerHTML = "<img src=" + q.imgSrc + ">";
-  answer01.innerHTML = q.answer01;
-  answer02.innerHTML = q.answer02;
-  answer03.innerHTML = q.answer03;
+  a_text.innerHTML = q.a;
+  b_text.innerHTML = q.b;
+  c_text.innerHTML = q.c;
 }
 
 function deselectAnswers() {
   answerElements.forEach(answerElements => answerElements.checked = false)
 }
 
-startButton.addEventListener("click", startQuiz);
+submitButton.addEventListener('click', () => {
+      const answer = selectAnswer()
+      if (answer === questions[currentQuestion].correct) {
+        score++;
+      }
+      currentQuestion++;
+      renderProgress()
 
-// Start quiz
-function startQuiz() {
-  console.log("Game has started");
-  startElement.style.display = "none";
-  renderQuiz();
-  quizElement.style.display = "block";
-  renderProgress();
-  // renderCounter();
-  // timer = setInterval(renderCounter, 1000);
+      if (currentQuestion < questions.length) {
+        renderQuiz()
+      } else {
+        renderScore()
+      }
+})
+
+function selectAnswer() {
+  answerElements.forEach(answerElement => {
+    if (answerElement.checked) {
+      answer = answerElement.id;
+    }
+  })
+  return answer;
+}
+
+function renderScore() {
+quizContainer.style.display = 'none';
+scoreElement.innerHTML = `
+<h2>You answered ${score}/${questions.length} questions correctly</h2>`
+scoreContainer.style.display = 'block';
 }
 
 // Redner progress
 function renderProgress() {
   // for (let currentProgress = 0; currentProgress <= lastQuestion; currentProgress++) {
-  let currentProgress = 0;
   currentProgress += 10;
   $("#progress")
     .css("width", currentProgress + "%")
     .attr("aria-valuenow", currentProgress)
-    .text(currentProgress + "% Complete");
+    // .text(currentProgress + "% Complete");
   progress.innerText += currentProgress;
 }
 
 // Select Answer (colour changes when clicked)
-let selectedAnswer = null;
+// let selectedAnswer = null;
 
-function selectAnswer() {
-  answerElements.forEach((button) => {
-    button.addEventListener("click", function () {
-      // remove green color from previously selected answer
-      if (selectedAnswer !== null) {
-        selectedAnswer.style.backgroundColor = "";
-      }
-      // set current button as selected answer and change color to green
-      selectedAnswer = button;
-      button.style.backgroundColor = "green";
-    });
-  });
-}
+// function selectAnswer() {
+//   answerElements.forEach((button) => {
+//     button.addEventListener("click", function () {
+//       // remove green color from previously selected answer
+//       if (selectedAnswer !== null) {
+//         selectedAnswer.style.backgroundColor = "";
+//       }
+//       // set current button as selected answer and change color to green
+//       selectedAnswer = button;
+//       button.style.backgroundColor = "green";
+//     });
+//   });
+// }
 
-submitButton.addEventListener('click', checkAnswer);
 
 // Check Answer
-function checkAnswer(answer) {
-    if (answer == questions[currentQuestion].correct) {
-      // answer is correct
-      score++;
-      // change progress color to green
-      answerIsCorrect();
-      console.log("Correct!");
-    } else {
-      // answer is wrong
-      // change progress color to red
-      answerIsWrong();
-      console.log("Wrong!");
-    }
-    count = 0;
-    if (currentQuestion < lastQuestion) {
-      currentQuestion++;
-      renderQuestion();
-    } else {
-      // end the quiz and show the score
-      // scoreRender();
-    }
-}
+// function checkAnswer(answer) {
+//     if (answer == questions[currentQuestion].correct) {
+//       // answer is correct
+//       score++;
+//       // change progress color to green
+//       answerIsCorrect();
+//       console.log("Correct!");
+//     } else {
+//       // answer is wrong
+//       // change progress color to red
+//       answerIsWrong();
+//       console.log("Wrong!");
+//     }
+//     count = 0;
+//     if (currentQuestion < lastQuestion) {
+//       currentQuestion++;
+//       renderQuestion();
+//     } else {
+//       // end the quiz and show the score
+//       scoreRender();
+//     }
+// }
 
-// answer is correct -> open modal
-function answerIsCorrect(){
-  document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
-}
+// // answer is correct -> open modal
+// function answerIsCorrect(){
+//   document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
+// }
 
-// answer is Wrong -> open modal
-function answerIsWrong(){
-  document.getElementById(currentQuestion).style.backgroundColor = "#f00";
-}
+// // answer is Wrong -> open modal
+// function answerIsWrong(){
+//   document.getElementById(currentQuestion).style.backgroundColor = "#f00";
+// }
+
+// // score render
+// function scoreRender(){
+//   scoreDiv.style.display = "block";
+  
+//   // calculate the amount of question percent answered by the user
+//   const scorePerCent = Math.round(100 * score/questions.length);
+  
+//   // choose the image based on the scorePerCent
+//   let img = (scorePerCent >= 80) ? "images/5.png" :
+//             (scorePerCent >= 60) ? "images/4.png" :
+//             (scorePerCent >= 40) ? "images/3.png" :
+//             (scorePerCent >= 20) ? "images/2.png" :
+//             "images/1.png";
+  
+//   scoreDiv.innerHTML = "<img src="+ img +">";
+//   scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+// }
 
 // function setNextQuestion() {
 //   // resetState()
@@ -160,7 +208,7 @@ function answerIsWrong(){
 // }
 
 // function showQuestion(question) {
-//   questionElement.innerText = question.question;
+//   questionContainer.innerText = question.question;
 
 //   questionsRef.get().then((snapshot) => {
 //     snapshot.forEach((doc) => {
