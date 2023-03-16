@@ -12,40 +12,113 @@ body {
 }
 
 /* ---------------------- */
-/* COMMON                 */
+/* Start Button           */
 /* ---------------------- */
-.hide {
+#start-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#start-btn {
+  background-color: #405cf5;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  line-height: 2.2;
+  outline: none;
+  text-align: center;
+  width: 50%;
+}
+
+#start-btn:disabled {
+  cursor: default;
+}
+
+#start-btn:focus {
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+}
+
+/* ---------------------- */
+/* Submit Button          */
+/* ---------------------- */
+#submit-btn {
+  font-size: 1.5em;
+  font-weight: bolder;
+  width:150px;
+  height:50px;
+  border : 2px solid lightgrey;
+  cursor: pointer;
+  color : lightgrey;
+}
+
+#submit-btn:hover{
+  border: 3px solid lightseagreen;
+  color : lightseagreen;
+}
+
+/* ---------------------- */
+/* Quiz Container         */
+/* ---------------------- */
+#quiz-container {
+  background-color: white;
   display: none;
 }
+
 
 /* ---------------------- */
 /* Top Menu               */
 /* ---------------------- */
-.menu-top {
-  font-size: 15pt;
-}
 
 /* ---------------------- */
 /* Progress Bar           */
 /* ---------------------- */
+.progress-container {
+  width: auto;
+  background-color: lightgrey;
+  border-radius: 6px;
+}
+
 
 /* ---------------------- */
 /* Image                  */
 /* ---------------------- */
+#image-container {
+  width: auto;
+  height: 250px;
+}
+
 
 /* ---------------------- */
 /* Question               */
 /* ---------------------- */
-.question-box {
+#question-container {
   font-size: 15pt;
 }
 
 /* ---------------------- */
 /* Answers                */
 /* ---------------------- */
+#answer-container {
+  height: 200px;
+}
 
-.answers {
-  height: 350px;
+.answer {
+  background-color: #405cf5;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  line-height: 1;
+  outline: none;
+  text-align: center;
+  width: 100%;
 }
 
 /* ---------------------- */
@@ -108,7 +181,7 @@ footer {
   justify-content: center;
 }
 
-body {
+/* body {
   position: relative;
 }
 body::before {
@@ -124,4 +197,4 @@ body::before {
   background-position: center;
   opacity: 0.7;
   z-index: -1;
-}
+} */

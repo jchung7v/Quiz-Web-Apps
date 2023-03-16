@@ -1,59 +1,189 @@
-// When users click a start button, quiz starts
-const startButton = document.getElementById("start-btn");
-const submitButton = document.getElementById("submit-btn");
-const quizContainer = document.getElementById("quiz-container");
-const questionElement = document.getElementById("question");
-const answerButtonsElement = document.getElementById("answer-buttons");
-const questionsRef = db.collection("questions");
-
-let shuffledQuestions, currentQuestionIndex;
-
+// Create our questions
+let questions = [
+  {
+    question: "What is the comfortable winter temperature for a dog?",
+    imgSrc: "./images/dog-in-winter_NL.webp",
+    a: "Between 17°C and 19°C",
+    b: "Between 20°C and 22°C",
+    c: "Between 23°C and 25°C",
+    correct: "b",
+  },
+  {
+    question: "What is your dog's favorite colour",
+    imgSrc: "img/css.png",
+    a: "Green",
+    b: "Red",
+    c: "Doesn't matter. My dog is colour blind",
+    correct: "c",
+  },
+  {
+    question: "What does dog for?",
+    imgSrc: "img/js.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "a",
+  },
+];
 // retrive the questions from Firestore and shuffle them randomly
-questionsRef.get().then((snapshot) => {
-  const questions = snapshot.docs.map((doc) => doc.data());
-  shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-});
+// questionsRef.get().then((snapshot) => {
+//   const questions = snapshot.docs.map((doc) => doc.data());
+//   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+// });
 
-startButton.addEventListener("click", startGame);
+const startButton = document.getElementById("start-btn"); // confirmed
 
-function startGame() {
+const quizElement = document.getElementById("quiz-container");
+const answerElements = document.querySelectorAll(".answer");
+const questionElement = document.getElementById("question-container"); //confirmed
+const submitButton = document.getElementById("submit-btn"); //confirmed
+
+const a_text = document.getElementById("a_text"); // confirmed
+const b_text = document.getElementById("b_text"); // confirmed
+const c_text = document.getElementById("c_text"); // confirmed
+
+
+const startElement = document.getElementById("start-btn-container");
+const progressElement = document.getElementById("progress-bar-container");
+const imageElement = document.getElementById("image-container"); // confirmed
+const answerButtonsElement = document.getElementById("answer-container");
+const progress = document.getElementById("progress");
+
+
+const questionsRef = db.collection("questions"); //confirmed
+
+
+const lastQuestion = questions.length - 1;
+let currentQuestion = 0;
+let count = 0;
+let score = 0;
+
+
+function renderQuiz() {
+
+  deselectAnswers()
+
+  let q = questions[currentQuestion];
+
+  questionElement.innerHTML = "<p>" + q.question + "</p>";
+  imageElement.innerHTML = "<img src=" + q.imgSrc + ">";
+  answer01.innerHTML = q.answer01;
+  answer02.innerHTML = q.answer02;
+  answer03.innerHTML = q.answer03;
+}
+
+function deselectAnswers() {
+  answerElements.forEach(answerElements => answerElements.checked = false)
+}
+
+startButton.addEventListener("click", startQuiz);
+
+// Start quiz
+function startQuiz() {
   console.log("Game has started");
-  startButton.classList.add("hide");
-  currentQuestionIndex = 0;
-  quizContainer.classList.remove("hide");
-  setNextQuestion();
+  startElement.style.display = "none";
+  renderQuiz();
+  quizElement.style.display = "block";
+  renderProgress();
+  // renderCounter();
+  // timer = setInterval(renderCounter, 1000);
 }
 
-function setNextQuestion() {
-  // resetState()
-  showQuestion(shuffledQuestions[currentQuestionIndex]);
+// Redner progress
+function renderProgress() {
+  // for (let currentProgress = 0; currentProgress <= lastQuestion; currentProgress++) {
+  let currentProgress = 0;
+  currentProgress += 10;
+  $("#progress")
+    .css("width", currentProgress + "%")
+    .attr("aria-valuenow", currentProgress)
+    .text(currentProgress + "% Complete");
+  progress.innerText += currentProgress;
 }
 
-function showQuestion(question) {
-  questionElement.innerText = question.question;
+// Select Answer (colour changes when clicked)
+let selectedAnswer = null;
 
-  questionsRef.get().then((snapshot) => {
-    snapshot.forEach((doc) => {
-      var answers = [
-        doc.data().answer01,
-        doc.data().answer02,
-        doc.data().answer03,
-        doc.data().answer04,
-      ];
-      console.log(answers[0]);
-      answers.forEach((answer) => {
-        const button = document.createElement("button");
-        button.innerText = answer.innerText;
-        button.classList.add("btn", "mt-3", "btn-lg", "btn-primary", "answer");
-        if (answer.correct) {
-          button.dataset.correct = answer.correct;
-        }
-        button.addEventListener("click", selectAnswer);
-        answerButtonsElement.appendChild(button);
-      });
+function selectAnswer() {
+  answerElements.forEach((button) => {
+    button.addEventListener("click", function () {
+      // remove green color from previously selected answer
+      if (selectedAnswer !== null) {
+        selectedAnswer.style.backgroundColor = "";
+      }
+      // set current button as selected answer and change color to green
+      selectedAnswer = button;
+      button.style.backgroundColor = "green";
     });
   });
 }
+
+submitButton.addEventListener('click', checkAnswer);
+
+// Check Answer
+function checkAnswer(answer) {
+    if (answer == questions[currentQuestion].correct) {
+      // answer is correct
+      score++;
+      // change progress color to green
+      answerIsCorrect();
+      console.log("Correct!");
+    } else {
+      // answer is wrong
+      // change progress color to red
+      answerIsWrong();
+      console.log("Wrong!");
+    }
+    count = 0;
+    if (currentQuestion < lastQuestion) {
+      currentQuestion++;
+      renderQuestion();
+    } else {
+      // end the quiz and show the score
+      // scoreRender();
+    }
+}
+
+// answer is correct -> open modal
+function answerIsCorrect(){
+  document.getElementById(currentQuestion).style.backgroundColor = "#0f0";
+}
+
+// answer is Wrong -> open modal
+function answerIsWrong(){
+  document.getElementById(currentQuestion).style.backgroundColor = "#f00";
+}
+
+// function setNextQuestion() {
+//   // resetState()
+//   showQuestion(shuffledQuestions[currentQuestionIndex]);
+// }
+
+// function showQuestion(question) {
+//   questionElement.innerText = question.question;
+
+//   questionsRef.get().then((snapshot) => {
+//     snapshot.forEach((doc) => {
+//       var answers = [
+//         doc.data().answer01,
+//         doc.data().answer02,
+//         doc.data().answer03,
+//         doc.data().answer04,
+//       ];
+//       console.log(answers[0]);
+//       answers.forEach((answer) => {
+//         const button = document.createElement("button");
+//         button.innerText = answer.innerText;
+//         button.classList.add("btn", "mt-3", "btn-lg", "btn-primary", "answer");
+//         if (answer.correct) {
+//           button.dataset.correct = answer.correct;
+//         }
+//         button.addEventListener("click", selectAnswer);
+//         answerButtonsElement.appendChild(button);
+//       });
+//     });
+//   });
+// }
 
 // answers.forEach(answer => {
 //   const button = document.createElement('button')
@@ -66,30 +196,12 @@ function showQuestion(question) {
 //   answerButtonsElement.appendChild(button)
 // })
 
-function resetState() {
-  submitButton.classList.add("hide");
-  while (answerButtonsElement.firstChild) {
-    answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-  }
-}
-
-function selectAnswer(e) {}
-
-//When users click a right answer, the answer button changes to green
-//when users click a wrong answer, the answer button changes to red
-// answerButtons is not WORKING!!!!
-
-const answerButtons = document.querySelectorAll(".answer");
-
-answerButtons.forEach((button) => {
-  button.addEventListener("click", buttonColourChange);
-});
-
-function buttonColourChange() {
-  console.log("colour changes to green");
-  answerButtons.classList.remove("btn-primary");
-  answerButtons.classList.add("btn-success");
-}
+// function resetState() {
+//   submitButton.classList.add("hide");
+//   while (answerButtonsElement.firstChild) {
+//     answerButtonsElement.removeChild(answerButtonsElement.firstChild);
+//   }
+// }
 
 //------------------------------------------------------------------------------
 // Input parameter is a string representing the collection we are reading from
@@ -201,5 +313,5 @@ function buttonColourChange() {
 // // The data is stored else where when the game is over. (archive)
 // // The archive data can be used later when needed (leaderboard, profile)
 
-// // I want answerButtons data base to be active only when player1 is playing game
+// // I want answerElements data base to be active only when player1 is playing game
 // // It's not just data it's active data (it gets updated when the user chooses to do different actions)
