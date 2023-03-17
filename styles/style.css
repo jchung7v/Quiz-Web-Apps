@@ -15,7 +15,7 @@ body {
 /* Start Button           */
 /* ---------------------- */
 #start-btn-container {
-  display: none;
+  display: block;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -44,6 +44,14 @@ body {
 }
 
 /* ---------------------- */
+/* Quiz Container         */
+/* ---------------------- */
+#quiz-container {
+  background-color: white;
+  display: none;
+}
+
+/* ---------------------- */
 /* Submit Button          */
 /* ---------------------- */
 #submit-btn {
@@ -52,9 +60,9 @@ body {
   width:100%;
   height:75px;
   border: none;
-  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
   cursor: pointer;
   color: white;
+  background-color: lightcoral;
   /* background-color: green; */
   transition-duration: 0.3s;
 }
@@ -62,23 +70,6 @@ body {
 #submit-btn:hover {
   background-color : lightseagreen;
 }
-
-#submit-btn:focus {
-  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
-}
-
-/* ---------------------- */
-/* Quiz Container         */
-/* ---------------------- */
-#quiz-container {
-  background-color: white;
-  display: block;
-}
-
-
-/* ---------------------- */
-/* Top Menu               */
-/* ---------------------- */
 
 /* ---------------------- */
 /* Progress Bar           */
@@ -89,6 +80,9 @@ body {
   border-radius: 6px;
 }
 
+.progress-bar {
+  border-radius: 6px;
+}
 
 /* ---------------------- */
 /* Image                  */
@@ -98,12 +92,11 @@ body {
   height: 250px;
 }
 
-
 /* ---------------------- */
 /* Question               */
 /* ---------------------- */
 #question-container {
-  font-size: 15pt;
+  font-size: 18pt;
 }
 
 /* ---------------------- */
@@ -128,6 +121,27 @@ body {
 } */
 
 /* ---------------------- */
+/* Score                  */
+/* ---------------------- */
+#score-container {
+  display: none;
+  text-align: center;
+  margin-top: 200px;
+  background-color:rgba(50, 151, 211, .3);
+  padding: 15px;
+}
+#score-box {
+  font-weight: bold;
+  font-size: 15pt;
+}
+#score {
+  font-size: 30pt;
+  color: green;
+  font-weight: bolder;
+}
+
+
+/* ---------------------- */
 /* Modal                  */
 /* ---------------------- */
 .modal-dialog {
@@ -148,12 +162,7 @@ button.submit-btn {
   border-radius: 10px;
 }
 
-/* ---------------------- */
-/* Score                  */
-/* ---------------------- */
-#score-container {
-  display: none;
-}
+
 
 
 .container-nav {

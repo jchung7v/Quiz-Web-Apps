@@ -10,7 +10,7 @@ let questions = [
   },
   {
     question: "What is your dog's favorite colour",
-    imgSrc: "img/css.png",
+    imgSrc: "./images/1.png",
     a: "Green",
     b: "Red",
     c: "Doesn't matter. My dog is colour blind",
@@ -18,7 +18,7 @@ let questions = [
   },
   {
     question: "What does dog for?",
-    imgSrc: "img/js.png",
+    imgSrc: "./images/2.png",
     a: "Wrong",
     b: "Wrong",
     c: "Correct",
@@ -39,45 +39,56 @@ const questionContainer = document.getElementById("question-container"); //confi
 const submitButton = document.getElementById("submit-btn"); //confirmed
 const scoreContainer = document.getElementById("score-container");
 const scoreElement = document.getElementById("score");
+const imageBox = document.getElementById("image-box");
 
 const a_text = document.getElementById("a_text"); // confirmed
 const b_text = document.getElementById("b_text"); // confirmed
 const c_text = document.getElementById("c_text"); // confirmed
 
-
-const startElement = document.getElementById("start-btn-container");
+const startContainer = document.getElementById("start-btn-container");
 const progressElement = document.getElementById("progress-bar-container");
 const imageElement = document.getElementById("image-container"); // confirmed
 const answerButtonsElement = document.getElementById("answer-container");
 const progress = document.getElementById("progress");
 
-
 // const questionsRef = db.collection("questions"); //confirmed
 
-
-const lastQuestion = questions.length - 1;
+// const lastQuestion = questions.length - 1;
 let currentQuestion = 0;
 let currentProgress = 0;
-let count = 0;
 let score = 0;
 
-// startButton.addEventListener("click", startQuiz);
-startQuiz()
+startButton.addEventListener("click", startQuiz);
 
 // Start quiz
-// render quiz > render progress bar > check answer
 function startQuiz() {
   console.log("Game has started");
-  // startElement.style.display = "none";
+  startContainer.style.display = "none";
   renderQuiz();
-  // quizContainer.style.display = "block";
+  quizContainer.style.display = "block";
   renderProgress();
   // renderCounter();
   // timer = setInterval(renderCounter, 1000);
 }
 
+submitButton.addEventListener("click", () => {
+  const answer = selectAnswer();
+  if (answer === questions[currentQuestion].correct) {
+    score++;
+  }
+  currentQuestion++;
+  currentProgress += 20;
+  renderProgress();
+
+  if (currentQuestion >= questions.length) {
+    renderScore();
+  } else {
+    renderQuiz();
+  }
+});
+
 function renderQuiz() {
-  deselectAnswers()
+  deselectAnswers();
   let q = questions[currentQuestion];
   questionContainer.innerHTML = "<p>" + q.question + "</p>";
   imageElement.innerHTML = "<img src=" + q.imgSrc + ">";
@@ -87,50 +98,55 @@ function renderQuiz() {
 }
 
 function deselectAnswers() {
-  answerElements.forEach(answerElements => answerElements.checked = false)
+  answerElements.forEach((answerElements) => (answerElements.checked = false));
 }
 
-submitButton.addEventListener('click', () => {
-      const answer = selectAnswer()
-      if (answer === questions[currentQuestion].correct) {
-        score++;
-      }
-      currentQuestion++;
-      renderProgress()
-
-      if (currentQuestion < questions.length) {
-        renderQuiz()
-      } else {
-        renderScore()
-      }
-})
+function renderProgress() {
+  // $("#progress")
+  //   .css("width", currentProgress + "%")
+  //   .attr("aria-valuenow", currentProgress)
+  // .text(currentProgress + "% Complete");
+  progress.style.width = currentProgress + "%";
+  progress.setAttribute("aria-valuenow", currentProgress);
+  progress.innerText += currentProgress;
+}
 
 function selectAnswer() {
-  answerElements.forEach(answerElement => {
+  answerElements.forEach((answerElement) => {
     if (answerElement.checked) {
-      answer = answerElement.id;
+      answerId = answerElement.id;
     }
-  })
-  return answer;
+  });
+  return answerId;
 }
 
 function renderScore() {
-quizContainer.style.display = 'none';
-scoreElement.innerHTML = `
-<h2>You answered ${score}/${questions.length} questions correctly</h2>`
-scoreContainer.style.display = 'block';
+  console.log("Score is...");
+  quizContainer.style.display = "none";
+  scoreContainer.style.display = "block";
+
+  // calculate the amount of question percent answered by the user
+  const scorePercent = Math.round((100 * score) / questions.length);
+
+  // choose the image based on the scorePercent
+  let img =
+    scorePercent >= 80
+      ? "images/5.png"
+      : scorePercent >= 60
+      ? "images/4.png"
+      : scorePercent >= 40
+      ? "images/3.png"
+      : scorePercent >= 20
+      ? "images/2.png"
+      : "images/1.png";
+
+  scoreElement.innerText = scorePercent + "%";
+  imageBox.innerHTML = "<img src=" + img + ">";
+  // scoreElement.innerHTML = `
+  // <h2>You answered ${score}/${questions.length} questions correctly</h2>`
 }
 
-// Redner progress
-function renderProgress() {
-  // for (let currentProgress = 0; currentProgress <= lastQuestion; currentProgress++) {
-  currentProgress += 10;
-  $("#progress")
-    .css("width", currentProgress + "%")
-    .attr("aria-valuenow", currentProgress)
-    // .text(currentProgress + "% Complete");
-  progress.innerText += currentProgress;
-}
+// Render progress
 
 // Select Answer (colour changes when clicked)
 // let selectedAnswer = null;
@@ -148,7 +164,6 @@ function renderProgress() {
 //     });
 //   });
 // }
-
 
 // Check Answer
 // function checkAnswer(answer) {
@@ -187,19 +202,19 @@ function renderProgress() {
 // // score render
 // function scoreRender(){
 //   scoreDiv.style.display = "block";
-  
+
 //   // calculate the amount of question percent answered by the user
-//   const scorePerCent = Math.round(100 * score/questions.length);
-  
-//   // choose the image based on the scorePerCent
-//   let img = (scorePerCent >= 80) ? "images/5.png" :
-//             (scorePerCent >= 60) ? "images/4.png" :
-//             (scorePerCent >= 40) ? "images/3.png" :
-//             (scorePerCent >= 20) ? "images/2.png" :
+//   const scorePercent = Math.round(100 * score/questions.length);
+
+//   // choose the image based on the scorePercent
+//   let img = (scorePercent >= 80) ? "images/5.png" :
+//             (scorePercent >= 60) ? "images/4.png" :
+//             (scorePercent >= 40) ? "images/3.png" :
+//             (scorePercent >= 20) ? "images/2.png" :
 //             "images/1.png";
-  
+
 //   scoreDiv.innerHTML = "<img src="+ img +">";
-//   scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+//   scoreDiv.innerHTML += "<p>"+ scorePercent +"%</p>";
 // }
 
 // function setNextQuestion() {
