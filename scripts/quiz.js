@@ -1,30 +1,104 @@
-// Create our questions
-let questions = [
-  {
+// firebase connection
+// dog and cat images 9 more, 9 more questions
+// modal "please select at least one answer"
+// startgame button in the middle
+
+const questionsRef = db.collection("questions");
+
+function writeQuestions() {
+  var questionsRef = db.collection("questions");
+
+  questionsRef.doc("Q1").set({
     question: "What is the comfortable winter temperature for a dog?",
     imgSrc: "./images/dog-in-winter_NL.webp",
     a: "Between 17°C and 19°C",
     b: "Between 20°C and 22°C",
     c: "Between 23°C and 25°C",
     correct: "b",
-  },
-  {
-    question: "What is your dog's favorite colour",
+  });
+
+  questionsRef.doc("Q2").set({
+    question: "What is your question 02",
     imgSrc: "./images/1.png",
-    a: "Green",
-    b: "Red",
-    c: "Doesn't matter. My dog is colour blind",
-    correct: "c",
-  },
-  {
-    question: "What does dog for?",
-    imgSrc: "./images/2.png",
     a: "Wrong",
     b: "Wrong",
     c: "Correct",
     correct: "c",
-  },
-];
+  });
+
+  questionsRef.doc("Q3").set({
+    question: "What is your question 03",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q4").set({
+    question: "What is your question 04",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q5").set({
+    question: "What is your question 05",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q6").set({
+    question: "What is your question 06",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q7").set({
+    question: "What is your question 07",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q8").set({
+    question: "What is your question 08",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q9").set({
+    question: "What is your question 09",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+
+  questionsRef.doc("Q10").set({
+    question: "What is your question 10",
+    imgSrc: "./images/1.png",
+    a: "Wrong",
+    b: "Wrong",
+    c: "Correct",
+    correct: "c",
+  });
+}
+
 // retrive the questions from Firestore and shuffle them randomly
 // questionsRef.get().then((snapshot) => {
 //   const questions = snapshot.docs.map((doc) => doc.data());
@@ -51,16 +125,14 @@ const imageElement = document.getElementById("image-container"); // confirmed
 const answerButtonsElement = document.getElementById("answer-container");
 const progress = document.getElementById("progress");
 
-// const questionsRef = db.collection("questions"); //confirmed
-
-// const lastQuestion = questions.length - 1;
-let currentQuestion = 0;
+let currentQuestion = 1;
 let currentProgress = 0;
 let score = 0;
+let qCorrect = "";
+let result = "";
 
 startButton.addEventListener("click", startQuiz);
 
-// Start quiz
 function startQuiz() {
   console.log("Game has started");
   startContainer.style.display = "none";
@@ -71,30 +143,43 @@ function startQuiz() {
   // timer = setInterval(renderCounter, 1000);
 }
 
-submitButton.addEventListener("click", () => {
+submitButton.addEventListener("click", nextQuiz);
+
+function nextQuiz() {
   const answer = selectAnswer();
-  if (answer === questions[currentQuestion].correct) {
+  if (answer === qCorrect) {
     score++;
   }
   currentQuestion++;
-  currentProgress += 20;
+  currentProgress += 10;
   renderProgress();
 
-  if (currentQuestion >= questions.length) {
+  if (currentQuestion > 10) {
     renderScore();
   } else {
     renderQuiz();
   }
-});
+}
 
 function renderQuiz() {
   deselectAnswers();
-  let q = questions[currentQuestion];
-  questionContainer.innerHTML = "<p>" + q.question + "</p>";
-  imageElement.innerHTML = "<img src=" + q.imgSrc + ">";
-  a_text.innerHTML = q.a;
-  b_text.innerHTML = q.b;
-  c_text.innerHTML = q.c;
+
+  let docRef = questionsRef.doc("Q" + currentQuestion);
+  docRef.get().then((doc) => {
+    // questions.forEach(doc => {
+    let qcontent = doc.data().question;
+    let qImgSource = doc.data().imgSrc;
+    let qAnswer01 = doc.data().a;
+    let qAnswer02 = doc.data().b;
+    let qAnswer03 = doc.data().c;
+    qCorrect = doc.data().correct;
+
+    questionContainer.innerHTML = "<p>" + qcontent + "</p>";
+    imageElement.innerHTML = "<img src=" + qImgSource + ">";
+    a_text.innerHTML = qAnswer01;
+    b_text.innerHTML = qAnswer02;
+    c_text.innerHTML = qAnswer03;
+  });
 }
 
 function deselectAnswers() {
@@ -102,13 +187,9 @@ function deselectAnswers() {
 }
 
 function renderProgress() {
-  // $("#progress")
-  //   .css("width", currentProgress + "%")
-  //   .attr("aria-valuenow", currentProgress)
-  // .text(currentProgress + "% Complete");
   progress.style.width = currentProgress + "%";
   progress.setAttribute("aria-valuenow", currentProgress);
-  progress.innerText += currentProgress;
+  progress.innerText = currentProgress + "%";
 }
 
 function selectAnswer() {
@@ -126,7 +207,7 @@ function renderScore() {
   scoreContainer.style.display = "block";
 
   // calculate the amount of question percent answered by the user
-  const scorePercent = Math.round((100 * score) / questions.length);
+  const scorePercent = Math.round((100 * score) / 10);
 
   // choose the image based on the scorePercent
   let img =
