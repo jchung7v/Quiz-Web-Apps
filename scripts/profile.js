@@ -3,7 +3,7 @@ var currentUser; //put this right after you start script tag before writing any 
 function populateUserInfo() {
   firebase.auth().onAuthStateChanged((user) => {
     // Check if user is signed in:
-    if (user) {
+    if (user !== null) {
       //go to the correct user document by referencing to the user uid
       currentUser = db.collection("users").doc(user.uid);
       //get the document for current user.
@@ -11,6 +11,7 @@ function populateUserInfo() {
         //get the data fields of the user
         var userName = userDoc.data().name;
         var userSchool = userDoc.data().school;
+        var userEmail = userDoc.data().email;
         var userCity = userDoc.data().city;
         var userPet = userDoc.data().pet;
         var userPetName = userDoc.data().petName;
@@ -61,6 +62,7 @@ function saveUserInfo() {
     .update({
       name: userName,
       school: userSchool,
+      email: userEmail,
       city: userCity,
       pet: userPet,
       petName: userPetName,
