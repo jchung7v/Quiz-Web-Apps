@@ -12,6 +12,8 @@ function populateUserInfo() {
         var userName = userDoc.data().name;
         var userSchool = userDoc.data().school;
         var userCity = userDoc.data().city;
+        var userPet = userDoc.data().pet;
+        var userPetName = userDoc.data().petName;
 
         //if the data fields are not empty, then write them in to the form.
         if (userName != null) {
@@ -22,6 +24,12 @@ function populateUserInfo() {
         }
         if (userCity != null) {
           document.getElementById("cityInput").value = userCity;
+        }
+        if (userPet != null) {
+          document.getElementById("petInput").value = userPet;
+        }
+        if (userPetName != null) {
+          document.getElementById("petNameInput").value = userPetName;
         }
       });
     } else {
@@ -45,13 +53,17 @@ function saveUserInfo() {
   //a) get user entered values
   userName = document.getElementById("nameInput").value; //get the value of the field with id="nameInput"
   userSchool = document.getElementById("schoolInput").value; //get the value of the field with id="schoolInput"
-  userCity = document.getElementById("cityInput").value; //get the value of the field with id="cityInput"
+  userCity = document.getElementById("cityInput").value;
+  userPet = document.getElementById("petInput").value; //get the value of the field with id="petInput"
+  userPetName = document.getElementById("petNameInput").value; //get the value of the field with id="petInput"
   //b) update user's document in Firestore
   currentUser
     .update({
       name: userName,
       school: userSchool,
       city: userCity,
+      pet: userPet,
+      petName: userPetName,
     })
     .then(() => {
       console.log("Document successfully updated!");

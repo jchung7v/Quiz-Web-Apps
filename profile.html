@@ -1,117 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="My 1800 App" />
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <title>My BCIT Project</title>
+  <meta name="comp1800 template" content="My 1800 App" />
 
-    <!------------------------------------------>
-    <!-- Bootstrap Library CSS JS CDN go here -->
-    <!------------------------------------------>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
+  <!------------------------>
+  <!-- Required meta tags -->
+  <!------------------------>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-------------------------------------------------------->
-    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-    <!-------------------------------------------------------->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+  <!------------------------------------------>
+  <!-- Bootstrap Library CSS JS CDN go here -->
+  <!------------------------------------------>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 
-    <!-------------------------------------------->
-    <!-- Other libraries and styles of your own -->
-    <!-------------------------------------------->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
-  </head>
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
-  <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-    <div class="container">
-      <h1>User Profile</h1>
-      <form>
-        <fieldset class="mb-3" id="personalInfoFields" disabled>
-          <div class="form-group">
-            <label>Name</label>
-            <input
-              type="text"
-              id="nameInput"
-              class="form-control"
-              placeholder="Enter your name"
-            />
-          </div>
-          <div class="form-group">
-            <label>School</label>
-            <input
-              type="text"
-              id="schoolInput"
-              class="form-control"
-              placeholder="Enter your school"
-            />
-          </div>
-          <div class="form-group">
-            <label>City</label>
-            <input
-              type="text"
-              id="cityInput"
-              class="form-control"
-              placeholder="Enter your city"
-            />
-          </div>
-        </fieldset>
-        <div class="d-flex justify-content-end mt-5">
-          <button
-            type="button"
-            class="btn btn-secondary"
-            onclick="editUserInfo()"
-          >
-            Edit
-          </button>
-          <span style="width: 10px"></span>
-          <button type="button" class="btn btn-info" onclick="saveUserInfo()">
-            Save
-          </button>
+  <!-------------------------------------------->
+  <!-- Other libraries and styles of your own -->
+  <!-------------------------------------------->
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+  <!-- our own navbar goes here -->
+
+  <nav id="navbarPlaceholder"></nav>
+
+  <!------------------------------>
+  <!-- Your HTML Layout go here -->
+  <!------------------------------>
+  
+  <div class="container">
+    <h1>User Profile</h1>
+    <form>
+      <fieldset class="mb-3" id="personalInfoFields" disabled>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" />
         </div>
-      </form>
-    </div>
-    <!-- our own navbar goes here -->
-    <nav id="navbarPlaceholder"></nav>
+        <div class="form-group">
+          <label>School</label>
+          <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school" />
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="cityInput" class="form-control" placeholder="Enter your city" />
+        </div>
+        <div class="form-group">
+          <label>Pet</label>
+          <input type="text" id="petInput" class="form-control" placeholder="Enter your Pet" />
+        </div>
+        <div class="form-group">
+          <label>Pet Name</label>
+          <input type="text" id="petNameInput" class="form-control" placeholder="Enter the name of your Pet" />
+        </div>
+      </fieldset>
+      <div class="d-flex justify-content-end mt-5">
+        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">
+          Edit
+        </button>
+        <span style="width: 10px"></span>
+        <button type="button" class="btn btn-info" onclick="saveUserInfo()">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
 
-    <!-- the body of your page goes here -->
-    <!-- stuff -->
+  <!-- the body of your page goes here -->
+  <!-- stuff -->
 
-    <!-- our own footer goes here-->
-    <nav id="footerPlaceholder"></nav>
+  <!-- our own footer goes here-->
+  <nav id="footerPlaceholder"></nav>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
-    <script src="./scripts/firebaseAPI_BBY27.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/profile.js"></script>
-  </body>
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
+  <script src="./scripts/firebaseAPI_BBY27.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/profile.js"></script>
+</body>
+
 </html>

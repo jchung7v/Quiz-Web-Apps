@@ -140,3 +140,9 @@ body::before {
   z-index: -1;
 }
 
+.container { 
+  padding-top: 100px;
+
+
+}
+
