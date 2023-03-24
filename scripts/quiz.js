@@ -3,7 +3,7 @@
 // modal "please select at least one answer"
 // startgame button in the middle
 
-const questionsRef = db.collection("questions");
+// const questionsRef = db.collection("questions");
 
 function writeQuestions() {
   var questionsRef = db.collection("questions");
@@ -143,6 +143,14 @@ function startQuiz() {
   // timer = setInterval(renderCounter, 1000);
 }
 
+var playAloneBtn = document.getElementById("playAlone-btn")
+
+playAloneBtn.addEventListener("click", function() {
+  window.location.href = "quiz.html";
+});
+
+
+
 submitButton.addEventListener("click", nextQuiz);
 
 function nextQuiz() {
@@ -156,6 +164,7 @@ function nextQuiz() {
 
   if (currentQuestion > 10) {
     renderScore();
+    saveUserScore();
   } else {
     renderQuiz();
   }
@@ -223,8 +232,23 @@ function renderScore() {
 
   scoreElement.innerText = scorePercent + "%";
   imageBox.innerHTML = "<img src=" + img + ">";
+  return scorePercent;
   // scoreElement.innerHTML = `
   // <h2>You answered ${score}/${questions.length} questions correctly</h2>`
+}
+
+function saveUserScore() {
+  if (user) {
+    var currentUser = db.collection("users").doc(user.uid);
+    currentUser.get()
+      .then(userDoc => {
+        db.collection("users").add({
+          score: renderScore()
+        }).then(() => {
+          console.log("User Score is successfully updated!");
+        })
+      })
+  }
 }
 
 // Render progress
