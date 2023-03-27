@@ -3,7 +3,7 @@
 
 <head>
     <title>Friends</title>
-    <meta name="comp1800 template" content="My 1800 App">
+    <meta name="x" content="xy">
 
     <!------------------------>
     <!-- Required meta tags -->
@@ -31,6 +31,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-------------------------------------------->
@@ -51,6 +52,17 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
+
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Email" aria-label="Search" id="search-input">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-button">Search</button>
+      </form>
+
+    <div id="search-results"></div>
+
+    <div id="current-friends"></div>
+
+
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
