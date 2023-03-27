@@ -69,8 +69,8 @@
       <!-- progress bar -->
       <div class="progress-container mt-3">
         <div
-          class="progress-bar bg-success"
-          id="progress"
+          class="progress-bar"
+          id="progress-bar"
           role="progressbar"
           aria-valuenow="0"
           aria-valuemin="0"
@@ -79,10 +79,7 @@
       </div>
 
       <!-- image container -->
-      <div
-        class="container mt-3 d-flex flex-row justify-content-center"
-        id="image-container"
-      ></div>
+      <div class="mt-3" id="image-container"></div>
 
       <!-- question container -->
       <div class="container mt-2 text-center" id="question-container"></div>
@@ -145,28 +142,30 @@
       </div>
       <div id="image-box"></div>
     </div>
+    <div class="container" id="after-game-container">
+      <div id="back-to-main-btn">Back To Main</div>
+      <div id="play-again-btn">Play Again</div>
+    </div>
 
     <!-- Modal -->
-    <!-- <div
-        class="modal fade"
-        id="rightAnswerModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-        style="display: block"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">Well Done! You earned 50,000 points!</div>
-          </div>
-        </div>
+    <div
+      class="modal"
+      id="correct-answer-modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      style="display: block"
+    >
+      <div class="modal-content">
+        <div class="modal-body">Well Done!</div>
       </div>
+    </div>
 
-      <div
-        class="modal-backdrop fade show"
-        id="backdrop"
-        style="display: none"
-      ></div> -->
+    <div
+      class="modal-backdrop backdrop fade show"
+      id="backdrop"
+      style="display: none"
+    ></div>
 
     <!-- our own navbar goes here -->
     <!-- <nav id="navbarPlaceholder"></nav> -->

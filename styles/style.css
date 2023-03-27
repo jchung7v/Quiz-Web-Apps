@@ -15,14 +15,14 @@ body {
 /* Start Button           */
 /* ---------------------- */
 #start-btn-container {
-  display: block;
+  display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
 #start-btn {
-  background-color: #405cf5;
+  background-color: #484d6d;
   border-radius: 6px;
   box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
     rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
@@ -34,16 +34,13 @@ body {
   outline: none;
   text-align: center;
   width: 50%;
+  transition-duration: 500ms;
 }
 
-#start-btn:disabled {
-  cursor: default;
-}
-
-#start-btn:focus {
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.2) 0 6px 15px 0, rgba(0, 0, 0, 0.1) 0 2px 2px 0,
-    rgba(50, 151, 211, 0.3) 0 0 0 4px;
+#start-btn:hover,
+#start-btn:focus,
+#start-btn:active {
+  background-color: #2c365e;
 }
 
 /* ---------------------- */
@@ -65,8 +62,11 @@ body {
   cursor: pointer;
   color: white;
   border: none;
-  background-color: lightseagreen;
+  background-color: #4b8f8c;
   transition-duration: 0.3s;
+  line-height: 2.2;
+  outline: none;
+  text-align: center;
 }
 
 /* ---------------------- */
@@ -78,8 +78,11 @@ body {
   border-radius: 6px;
 }
 
-.progress-bar {
+#progress-bar {
+  background-color: #c5979d;
   border-radius: 6px;
+  height: 25px;
+  font-size: 10pt;
 }
 
 /* ---------------------- */
@@ -88,6 +91,16 @@ body {
 #image-container {
   width: auto;
   height: 250px;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+#image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
 }
 
 /* ---------------------- */
@@ -95,6 +108,7 @@ body {
 /* ---------------------- */
 #question-container {
   font-size: 18pt;
+  line-height: 22pt;
 }
 
 /* ---------------------- */
@@ -104,27 +118,13 @@ body {
   height: 200px;
 }
 
-/* .answer {
-  background-color: #405cf5;
-  border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 15pt;
-  height: 44px;
-  line-height: 1;
-  outline: none;
-  text-align: center;
-  width: 100%;
-} */
-
 /* ---------------------- */
 /* Score                  */
 /* ---------------------- */
 #score-container {
   display: none;
   text-align: center;
-  margin-top: 200px;
+  margin-top: 150px;
   background-color: rgba(50, 151, 211, 0.3);
   padding: 15px;
 }
@@ -139,16 +139,62 @@ body {
 }
 
 /* ---------------------- */
+/* After Game             */
+/* Play Again Btn &       */
+/* Back to Main Btn       */
+/* ---------------------- */
+#after-game-container {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  margin-top: 300px;
+}
+
+#back-to-main-btn,
+#play-again-btn {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  line-height: 2.2;
+  outline: none;
+  text-align: center;
+  width: 50%;
+}
+
+#back-to-main-btn:hover,
+#back-to-main-btn:focus,
+#back-to-main-btn:active {
+  background-color: #2c365e;
+}
+
+#play-again-btn:hover,
+#play-again-btn:focus,
+#play-again-btn:active {
+  background-color: #2c365e;
+}
+
+/* ---------------------- */
 /* Modal                  */
 /* ---------------------- */
 .modal-dialog {
+  display: block;
   position: fixed;
-  top: auto;
-  right: auto;
-  left: auto;
-  bottom: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+  text-align: center;
 }
 
+/* ---------------------- */
+/*                        */
+/* ---------------------- */
 div.fixed-bottom-box {
   height: 80px;
   background: white;
@@ -216,7 +262,6 @@ body::before {
   z-index: -1;
 } */
 
-.profile-container { 
+.profile-container {
   padding-top: 100px;
 }
-
