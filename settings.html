@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <title>Friends</title>
-    <meta name="x" content="xy">
+    <title>Settings</title>
+    <meta name="comp1800 template" content="My 1800 App">
 
     <!------------------------>
     <!-- Required meta tags -->
@@ -20,7 +20,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
+        </script>
 
     <!-------------------------------------------------------->
     <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
@@ -30,8 +30,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-------------------------------------------->
@@ -52,19 +51,11 @@
 
     <!-- the body of your page goes here -->
     <!-- stuff -->
-
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search Email" aria-label="Search" id="search-input">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="search-button">Search</button>
-      </form>
-
-    <div id="search-results"></div>
-
-    <div id="friend-count"></div>
-
-    <div id="current-friends"></div>
-
-
+    <body>
+        <button id="logout-button">Logout</button>
+        <div id="current-friends"></div>
+        <div id="friends-count"></div>
+    </body>
 
     <!-- our own footer goes here-->
     <nav id="footerPlaceholder"></nav>
@@ -74,8 +65,7 @@
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY27.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/friends.js"></script>
-    
+    <script src="./scripts/script.js"></script>
 
 </body>
 
