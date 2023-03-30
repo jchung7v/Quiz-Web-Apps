@@ -66,7 +66,6 @@ function saveUserInfo() {
     .update({
       name: userName,
       school: userSchool,
-      email: userEmail,
       city: userCity,
       pet: userPet,
       petName: userPetName,
@@ -77,3 +76,4 @@ function saveUserInfo() {
   //c) disable edit
   document.getElementById("personalInfoFields").disabled = true;
 }
+
