@@ -171,10 +171,12 @@ body {
   margin-top: 100px;
   padding: 15px;
 }
+
 #score-box {
   font-weight: bold;
   font-size: 15pt;
 }
+
 #score {
   font-size: 30pt;
   color: darkgreen;

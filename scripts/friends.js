@@ -87,7 +87,6 @@ document.getElementById('search-button').addEventListener('click', addFriends);
 
 //Define currentUser for loadFriends
 var currentUser;
-
 //Run function once the page is loaded to ensure no console log errors
 document.addEventListener('DOMContentLoaded', function () {
   firebase.auth().onAuthStateChanged(function (user) {
@@ -103,7 +102,6 @@ function loadFriends(user) {
   currentUser = db.collection("users").doc(user.uid);
   //friendsRef is the friends that belong to the collection of the user that is currently logged in (currentUser)
   const friendsRef = firebase.firestore().collection("users").doc(currentUser.id).collection("friends");
-
   //get is a callback function that defines friends. querySnapshot represents the results from a firestore query. 
   //get friend id for each friend in the collection, then 'push' it to the array.
   friendsRef.get().then(function (querySnapshot) {
