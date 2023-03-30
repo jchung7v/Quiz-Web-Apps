@@ -1,6 +1,5 @@
-// Add event listener to search button
-document.getElementById('search-button').addEventListener('click', function (event) {
-  event.preventDefault(); // prevent form submission
+function addFriends(event) {
+  event.preventDefault();
 
   // Get search query from input field
   var searchQuery = document.getElementById('search-input').value;
@@ -41,7 +40,7 @@ document.getElementById('search-button').addEventListener('click', function (eve
           var userId = firebase.auth().currentUser.uid;
 
           // Search Firestore to check if the friend has already been added
-          db.collection('users').doc(userId).collection('friends').where('email', '==', friendEmail,).get().then(function (querySnapshot) {
+          db.collection('users').doc(userId).collection('friends').where('email', '==', friendEmail).get().then(function (querySnapshot) {
             if (querySnapshot.empty) {
               // Friend has not been added, enable the add friend button
               addFriendButton.addEventListener('click', function (event) {
@@ -80,7 +79,11 @@ document.getElementById('search-button').addEventListener('click', function (eve
     };
     xhr.send();
   });
-});
+}
+
+// Add event listener to search button
+document.getElementById('search-button').addEventListener('click', addFriends);
+
 
 //Define currentUser for loadFriends
 var currentUser;
