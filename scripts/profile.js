@@ -15,6 +15,7 @@ function populateUserInfo() {
         var userCity = userDoc.data().city;
         var userPet = userDoc.data().pet;
         var userPetName = userDoc.data().petName;
+        var userScore = 0;
 
         //if the data fields are not empty, then write them in to the form.
         if (userName != null) {
@@ -31,6 +32,9 @@ function populateUserInfo() {
         }
         if (userPetName != null) {
           document.getElementById("petNameInput").value = userPetName;
+        }
+        if (userScore != null) {
+          document.getElementById("userScore").value = userScore;
         }
       });
     } else {

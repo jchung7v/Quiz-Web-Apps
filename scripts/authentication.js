@@ -22,6 +22,7 @@ var uiConfig = {
                   email: user.email,                         //with authenticated user's ID (user.uid)
                   country: "Canada",                      //optional default profile info      
                   school: "BCIT", 
+                  score: 0,
                   // pet: user.pet,
                   // petName: user.petName,                         //optional default profile info
               }).then(function () {
