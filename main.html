@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>temPETure</title>
+    <meta name="comp1800 template" content="My 1800 App" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<head>
-  <title>temPETure</title>
-  <meta name="comp1800 template" content="My 1800 App" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Serif+Lao&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+  </head>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-
-</head>
-
-<body>
-
-  <nav id="navbarPlaceholder"></nav>
-
-  <div class="container-fluid bg-light text-dark mx-auto">
-    <div class="container bg-light">
-        <h1 class="display-4 d-flex align-items-center">Welcome, <span id="name-goes-here">Name</span></h1>
-        <hr>
+  <body>
+    <nav class="navbar" id="navbarPlaceholder"></nav>
+    
+    <div class="container mx-auto">
+      <div class="container mt-5">
+        <h1 class="align-items-center">
+          Welcome, <span id="name-goes-here">Name</span>
+        </h1>
+        <hr />
+      </div>
     </div>
-</div>
-  
-  <div class="d-flex justify-content-around p-4 play-buttons">
-    <button type="button-play" class="btn btn-success btn-lg">Play with Friends!</button>
-    <button type="button-play" class="btn btn-secondary btn-lg" id="playAlone-btn">Play Alone</button>
-  </div>
 
-  <footer id="footerPlaceholder"></footer>
+    <div class="d-flex justify-content-around play-buttons">
+      <!-- <button type="button-play" class="btn btn-success btn-lg">Play with Friends!</button> -->
+      <button
+        type="button-play"
+        class="btn"
+        id="start-btn"
+      >
+        Start Quiz
+      </button>
+    </div>
 
-  <script src="./scripts/firebaseAPI_BBY27.js"></script>
-  <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
+    <footer class="footer" id="footerPlaceholder"></footer>
 
-  <!-- <script src="./scripts/script.js"></script> -->
-
-</body>
+    <script src="./scripts/firebaseAPI_BBY27.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>
