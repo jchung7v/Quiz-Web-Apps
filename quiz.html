@@ -45,6 +45,12 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Serif+Lao&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -59,11 +65,9 @@
 
     <!-- quiz container -->
     <div class="container" id="quiz-container">
-      <!-- menu top -->
-      <div class="pt-3 d-flex flex-row justify-content-end menu-top">
-        <div class="">
-          <img id="menu-kebab" src="./images/menu-kebab.svg" alt="menu" />
-        </div>
+      <!-- exit button -->
+      <div class="mt-3" id="exit-btn-container">
+        <div id="exit-btn">Exit</div>
       </div>
 
       <!-- progress bar -->
@@ -82,7 +86,7 @@
       <div class="mt-3" id="image-container"></div>
 
       <!-- question container -->
-      <div class="container mt-2 text-center" id="question-container"></div>
+      <div class="container mt-3 text-center" id="question-container"></div>
       <hr />
 
       <!-- answer buttons -->
@@ -133,6 +137,10 @@
       </div>
     </div>
 
+    <div class="alert alert-primary" id="alert-message" role="alert">
+      Please select at least one answer.
+    </div>
+
     <!-- Score -->
     <div class="container" id="score-container">
       <div id="score-box">
@@ -149,15 +157,30 @@
 
     <!-- Modal -->
     <div
-      class="modal"
+      class="modal modal1"
       id="correct-answer-modal"
       tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-      style="display: block"
+      role="dialog"
+      style="display: none"
     >
-      <div class="modal-content">
-        <div class="modal-body">Well Done!</div>
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="correct-answer-modal-content">
+          <div class="modal-body">Correct! Answer Points +10</div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal modal2"
+      id="wrong-answer-modal"
+      tabindex="-1"
+      role="dialog"
+      style="display: none"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="wrong-answer-modal-content">
+          <div class="modal-body">Incorrect Answer</div>
+        </div>
       </div>
     </div>
 
@@ -166,6 +189,45 @@
       id="backdrop"
       style="display: none"
     ></div>
+
+    <div
+    class="modal modal3"
+    id="exit-modal"
+    tabindex="-1"
+    role="dialog"
+    style="display: none"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="exit-modal-content">
+        <div class="modal-body">Exit this game?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-btn" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="exit-confirm-btn">Exit</button>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+    <!-- <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Exit this game?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Exit</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div> -->
 
     <!-- our own navbar goes here -->
     <!-- <nav id="navbarPlaceholder"></nav> -->
