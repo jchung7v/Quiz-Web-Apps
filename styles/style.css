@@ -15,39 +15,6 @@ body {
 }
 
 /* ---------------------- */
-/* Start Button           */
-/* ---------------------- */
-#start-btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #4b8f8c;
-}
-
-#start-btn {
-  background-color: #484d6d;
-  border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 15pt;
-  height: 44px;
-  line-height: 2.2;
-  outline: none;
-  text-align: center;
-  width: 50%;
-  transition-duration: 500ms;
-}
-
-#start-btn:hover,
-#start-btn:focus,
-#start-btn:active {
-  background-color: #2c365e;
-}
-
-/* ---------------------- */
 /* Exit Button            */
 /* ---------------------- */
 #exit-btn-container {
@@ -171,10 +138,12 @@ body {
   margin-top: 100px;
   padding: 15px;
 }
+
 #score-box {
   font-weight: bold;
   font-size: 15pt;
 }
+
 #score {
   font-size: 30pt;
   color: darkgreen;
@@ -263,8 +232,80 @@ body {
 }
 
 /* ---------------------- */
-/*                        */
+/* Main HTML              */
 /* ---------------------- */
+
+
+/* ---------------------- */
+/* Start Button           */
+/* ---------------------- */
+#start-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4b8f8c;
+}
+
+#start-btn {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 50%;
+  transition-duration: 500ms;
+}
+
+#start-btn:hover,
+#start-btn:focus,
+#start-btn:active {
+  background-color: #2c365e;
+}
+
+/* ---------------------- */
+/* Nav Bar                */
+/* ---------------------- */
+
+.navbar {
+  position: fixed;
+  height: 100;
+  width: 100%;
+  background-color: #2c365e;
+  /* background-image: url("/images/Buttons/footerbackground.png"); */
+}
+
+.navbar-brand-logo {
+  width: 80;
+}
+
+/* ---------------------- */
+/* Footer                 */
+/* ---------------------- */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #2c365e;
+  /* background-image: url("/images/Buttons/footerbackground.png"); */
+}
+
+a:link { text-decoration: none; }
+a:visited { text-decoration: none; }
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
+
+#footer-btn-container a {
+  color: white;
+}
+
 div.fixed-bottom-box {
   height: 80px;
   background: white;
@@ -289,23 +330,9 @@ button.submit-btn {
   padding-bottom: 60px;
 }
 
-.navbar {
-  position: fixed;
-  height: 100;
-  width: 100%;
-  background-image: url("/images/Buttons/footerbackground.png");
-}
 
-.navbar-brand-logo {
-  width: 80;
-}
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-image: url("/images/Buttons/footerbackground.png");
-}
+
 
 .play-buttons {
   height: 80vh;
