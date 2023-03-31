@@ -297,10 +297,21 @@ body {
   /* background-image: url("/images/Buttons/footerbackground.png"); */
 }
 
-a:link { text-decoration: none; }
-a:visited { text-decoration: none; }
-a:hover { text-decoration: none; }
-a:active { text-decoration: none; }
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
 
 #footer-btn-container a {
   color: white;
@@ -361,4 +372,28 @@ body::before {
 
 .profile-container {
   padding-top: 100px;
+}
+
+#leaderboard-section {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+#leaderboard {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #2c365e;
+}
+
+#leaderboard li:first-child {
+  font-weight: bold;
 }
