@@ -534,3 +534,30 @@ body::before {
   background-color: #1ca347;
   border-color: #1ca347;
 }
+
+/*
+
+    INDEX PAGE
+
+
+*/
+
+
+.index-landing{
+  padding-top: 100px;
+  margin-left: 80px;
+}
+
+#index-head{
+  font-weight: 100;
+  font-style: normal;
+  color: #2c365e;
+}
+
+#index-title{
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+
