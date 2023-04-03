@@ -374,6 +374,11 @@ body::before {
   padding-top: 100px;
 }
 
+
+/*
+  Styles the leaderboard
+*/
+
 #leaderboard-section {
   background-color: #f8f8f8;
   border: 1px solid #ccc;
