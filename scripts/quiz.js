@@ -1,5 +1,4 @@
 const questionsRef = db.collection("questions");
-const startButton = document.getElementById("start-btn");
 const quizContainer = document.getElementById("quiz-container");
 const answerElements = document.querySelectorAll(".answer");
 const questionContainer = document.getElementById("question-container");
@@ -28,15 +27,15 @@ let score = 0;
 let qCorrect = "";
 let result = "";
 
-startButton.addEventListener("click", function () {
-  setTimeout(startQuiz, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  startQuiz();
 });
 
 function startQuiz() {
   console.log("Game has started");
-  startContainer.style.display = "none";
+  // startContainer.style.display = "none";
   renderQuiz();
-  quizContainer.style.display = "block";
+  // quizContainer.style.display = "block";
   renderProgress();
   // renderCounter();
   // timer = setInterval(renderCounter, 1000);
