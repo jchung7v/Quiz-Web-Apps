@@ -119,9 +119,8 @@ function loadFriends(user) {
     friends.forEach(function (friend) {
       html += '<div class="friendcard">';
       html += '<h2 class="friend-name">' + friend.name + '</h2>';
-      html += '<p class="friend-email">' + "Pet: " + friend.pet + '</p>';
-      html += '<p class="friend-email">' + "Pet Name: " + friend.petName + '</p>';
-      html += '</div>';
+      html += '<p class="friend-email">' + "Email: " + friend.email + "<br>" + "Pet Name: " + friend.petName + '</p>';
+      html += '<hr></div>';
     });
     //Place div in current-friends div in friends.html
     document.getElementById('current-friends').innerHTML = html;
@@ -132,7 +131,7 @@ function loadFriends(user) {
       document.getElementById('friend-count').style.display = 'none';
       // Update the innerHTML of the friends-count div to display the friends length  
     } else {
-      document.getElementById('friend-count').innerHTML = "Friends:  <strong>" + friends.length + "</strong>";
+      document.getElementById('friend-count').innerHTML = "Added Friends:  <strong>" + friends.length + "</strong>";
     }
   });
 }

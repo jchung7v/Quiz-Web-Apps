@@ -47,37 +47,37 @@
   <!-- Your HTML Layout go here -->
   <!------------------------------>
 
-  <div class="profile-container">
+  <div class="container profile-container">
     <h1>User Profile</h1>
     <form>
-      <fieldset class="mb-3" id="personalInfoFields" disabled>
-        <div class="form-group">
+      <fieldset class="" id="personalInfoFields" disabled>
+        <div class="mt-3 form-group">
           <label>Name</label>
           <input type="text" id="nameInput" class="form-control" placeholder="Enter your name" />
         </div>
-        <div class="form-group">
+        <div class="mt-3 form-group">
           <label>School</label>
           <input type="text" id="schoolInput" class="form-control" placeholder="Enter your school" />
         </div>
-        <div class="form-group">
+        <div class="mt-3 form-group">
           <label>City</label>
           <input type="text" id="cityInput" class="form-control" placeholder="Enter your city" />
         </div>
-        <div class="form-group">
+        <div class="mt-3 form-group">
           <label>Pet</label>
           <input type="text" id="petInput" class="form-control" placeholder="Enter your Pet" />
         </div>
-        <div class="form-group">
+        <div class="mt-3 form-group">
           <label>Pet Name</label>
           <input type="text" id="petNameInput" class="form-control" placeholder="Enter the name of your Pet" />
         </div>
       </fieldset>
-      <div class="d-flex justify-content-end mt-5">
-        <button type="button" class="btn btn-secondary" onclick="editUserInfo()">
+      <div class="d-flex justify-content-end mt-4">
+        <button type="button" id="profile-edit-btn" class="btn btn-secondary" onclick="editUserInfo()">
           Edit
         </button>
         <span style="width: 10px"></span>
-        <button type="button" class="btn btn-info" onclick="saveUserInfo()">
+        <button type="button" id="profile-save-btn" class="btn" onclick="saveUserInfo()">
           Save
         </button>
       </div>
