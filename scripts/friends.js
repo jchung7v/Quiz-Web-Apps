@@ -119,7 +119,7 @@ function loadFriends(user) {
     friends.forEach(function (friend) {
       html += '<div class="friendcard">';
       html += '<h2 class="friend-name">' + friend.name + '</h2>';
-      html += '<p class="friend-email">' + "Email: " + friend.email + "<br>" + "Pet Name: " + friend.petName + '</p>';
+      html += '<p class="friend-name">' + "Pet Name: " + friend.pet + "<br>" + "Pet Name: " + friend.petName + '</p>';
       html += '<hr></div>';
     });
     //Place div in current-friends div in friends.html
