@@ -12,7 +12,54 @@ body {
   font-family: "Lato", sans-serif;
   font-family: "Noto Serif Lao", serif;
   font-family: "Roboto", sans-serif;
+  background-color: #f8f9fa;
+  /* overflow: hidden; */
 }
+
+/* ---------------------- */
+/* Welcome Message        */
+/* Background Image       */
+/* ---------------------- */
+.welcome-message-container {
+  justify-content: center;
+  align-items: center;
+  height: 25vh;
+}
+
+.welcome-message-container h1 {
+  font-size: 25pt;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: white;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 12px;
+}
+
+#background-img-container1 {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("/images/dog-pug-face.jpeg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#background-img-container2 {
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("/images/dog-blanket.jpeg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* ---------------------- */
+/* Profile Button            */
+/* ---------------------- */
 
 /* ---------------------- */
 /* Exit Button            */
@@ -20,28 +67,21 @@ body {
 #exit-btn-container {
   display: flex;
   justify-content: end;
-  align-items: center;
 }
 
 #exit-btn {
-  background-color: darkgrey;
+  background-color: #2c365e;
+  color: white;
   border-radius: 6px;
   box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
     rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
   cursor: pointer;
   font-size: 9pt;
-  width: 12%;
+  width: 15%;
   text-align: center;
   outline: none;
-  padding: 2px 4px 2px 4px;
+  padding: 2px 4x 2px 4px;
   outline: none;
-}
-
-#exit-btn:hover,
-#exit-btn:focus,
-#exit-btn:active {
-  background-color: #2c365e;
-  color: white;
 }
 
 /* ---------------------- */
@@ -49,6 +89,7 @@ body {
 /* ---------------------- */
 #quiz-container {
   background-color: white;
+  height: 100vh;
   /* display: none; */
 }
 
@@ -65,7 +106,7 @@ body {
   cursor: pointer;
   color: white;
   border: none;
-  background-color: #4b8f8c;
+  background-color: #2c365e;
   transition-duration: 0.3s;
   line-height: 2.2;
   outline: none;
@@ -77,6 +118,8 @@ body {
 /* ---------------------- */
 #alert-message {
   display: none;
+  position: fixed;
+  width: 80%;
 }
 
 /* ---------------------- */
@@ -89,7 +132,7 @@ body {
 }
 
 #progress-bar {
-  background-color: #c5979d;
+  background-color: #4b8f8c;
   border-radius: 6px;
   height: 25px;
   font-size: 10pt;
@@ -141,19 +184,17 @@ body {
 
 #score-box {
   font-weight: bold;
-  font-size: 15pt;
+  font-size: 20pt;
 }
 
 #score {
-  font-size: 30pt;
+  font-size: 50pt;
   color: darkgreen;
   font-weight: bolder;
 }
 
 #image-box {
-  /* width: auto;
-  height: auto; */
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 #image-box img {
@@ -163,18 +204,13 @@ body {
   border-radius: 6px;
 }
 
-/* ---------------------- */
-/* After Game             */
-/* Play Again Btn &       */
-/* Back to Main Btn       */
-/* ---------------------- */
 #after-game-container {
   display: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100px;
-  margin-top: 100px;
+  height: 110px;
+  margin-top: 80px;
 }
 
 #back-to-main-btn,
@@ -232,10 +268,6 @@ body {
 }
 
 /* ---------------------- */
-/* Main HTML              */
-/* ---------------------- */
-
-/* ---------------------- */
 /* Start Button           */
 /* ---------------------- */
 #start-btn-container {
@@ -253,12 +285,12 @@ body {
     rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
   color: #fff;
   cursor: pointer;
-  font-size: 15pt;
-  height: 44px;
+  font-size: 20pt;
+  height: 60px;
   /* line-height: 2.2; */
   outline: none;
   text-align: center;
-  width: 50%;
+  width: 60%;
   transition-duration: 500ms;
 }
 
@@ -277,7 +309,6 @@ body {
   height: 100;
   width: 100%;
   background-color: #2c365e;
-  /* background-image: url("/images/Buttons/footerbackground.png"); */
 }
 
 .container-nav-logo-1 {
@@ -286,6 +317,40 @@ body {
 
 .container-nav-logo-2 {
   margin-right: 10px;
+}
+/* ---------------------- */
+/* Profile &Setting       */
+/* ---------------------- */
+
+#logout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: #4b8f8c; */
+}
+
+#logout-button,
+#profile-save-btn {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 50%;
+  transition-duration: 500ms;
+}
+
+#logout-button:hover,
+#logout-button:focus,
+#logout-button:active {
+  background-color: #2c365e;
 }
 
 /* ---------------------- */
@@ -399,6 +464,40 @@ body::before {
 
 #leaderboard li:first-child {
   font-weight: bold;
+}
+
+/* ---------------------- */
+/* LEADERBOARD            */
+/* ---------------------- */
+
+#search-button {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 100%;
+  transition-duration: 500ms;
+}
+
+/* #logout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4b8f8c;
+} */
+
+#search-button:hover,
+#search-button:focus,
+#search-button:active {
+  background-color: #2c365e;
 }
 
 /* ---------------------- */

@@ -54,12 +54,12 @@ submitButton.addEventListener("click", function () {
   if (isChecked) {
     submitButton.style.backgroundColor = "#2c365e";
     setTimeout(function () {
-      submitButton.style.backgroundColor = "#4B8F8C";
+      // submitButton.style.backgroundColor = "#4B8F8C";
       openModal();
       // nextQuiz();
     }, 1000);
   } else {
-    alertMessage.style.display = "block";
+    alertMessage.style.display = "flex";
     setTimeout(function () {
       alertMessage.style.display = "none";
     }, 1000);

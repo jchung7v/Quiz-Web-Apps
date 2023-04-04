@@ -61,8 +61,8 @@
     <!-- quiz container -->
     <div class="container" id="quiz-container">
       <!-- exit button -->
-      <div class="mt-3" id="exit-btn-container">
-        <div id="exit-btn">Exit</div>
+      <div class="container" id="exit-btn-container">
+        <div class="mt-3" id="exit-btn">Exit</div>
       </div>
 
       <!-- progress bar -->
@@ -121,6 +121,11 @@
           <label class="form-check-label" for="c" id="c_text">Answer</label>
         </div>
 
+        <!-- Alert Message -->
+        <div class="alert alert-primary" id="alert-message" role="alert">
+          Please select at least one answer.
+        </div>
+        
         <!-- submit button -->
         <button
           type="button"
@@ -132,9 +137,8 @@
       </div>
     </div>
 
-    <div class="alert alert-primary" id="alert-message" role="alert">
-      Please select at least one answer.
-    </div>
+
+
 
     <!-- Score -->
     <div class="container" id="score-container">
