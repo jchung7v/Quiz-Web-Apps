@@ -17,6 +17,51 @@ body {
 }
 
 /* ---------------------- */
+/* INDEX                  */
+/* ---------------------- */
+
+.index-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.index-logo-container img {
+  width: 40%;
+}
+
+.login-btn {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 50%;
+  transition-duration: 500ms;
+}
+
+/* .index-landing{
+  padding-top: 100px;
+  margin-left: 80px;
+} */
+
+/* #index-head{
+  font-weight: 100;
+  font-style: normal;
+  color: #2c365e;
+}
+
+#index-title{
+  font-weight: 600;
+  font-style: italic;
+} */
+
+/* ---------------------- */
 /* Welcome Message        */
 /* Background Image       */
 /* ---------------------- */
@@ -58,7 +103,7 @@ body {
 }
 
 /* ---------------------- */
-/* Profile Button            */
+/* Profile Button         */
 /* ---------------------- */
 
 /* ---------------------- */
@@ -438,8 +483,6 @@ body::before {
   padding-top: 100px;
 }
 
-
-
 /*
   Styles the leaderboard
 */
@@ -447,7 +490,6 @@ body::before {
 /* ---------------------- */
 /* LEADERBOARD            */
 /* ---------------------- */
-
 
 #leaderboard-section {
   background-color: #f8f8f8;
@@ -493,14 +535,6 @@ body::before {
   transition-duration: 500ms;
 }
 
-/* #logout-button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #4b8f8c;
-} */
-
 #search-button:hover,
 #search-button:focus,
 #search-button:active {
@@ -513,6 +547,13 @@ body::before {
 
 /* body {
   padding-top: 90px;
+} */
+
+/* #navbar-fake {
+  position: fixed;
+  height: 500;
+  width: 100%;
+  background-color: #2c365e;
 } */
 
 .panel-login {
@@ -633,30 +674,3 @@ body::before {
   background-color: #1ca347;
   border-color: #1ca347;
 }
-
-/*
-
-    INDEX PAGE
-
-
-*/
-
-
-.index-landing{
-  padding-top: 100px;
-  margin-left: 80px;
-}
-
-#index-head{
-  font-weight: 100;
-  font-style: normal;
-  color: #2c365e;
-}
-
-#index-title{
-  font-weight: 600;
-  font-style: italic;
-}
-
-
-
