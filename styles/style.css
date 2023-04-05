@@ -22,11 +22,13 @@ body {
 
 .index-container {
   height: 100vh;
-  width: 100vw;
 }
 
-.index-logo-container img {
-  width: 40%;
+.login-conatiner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-btn {
@@ -85,7 +87,7 @@ body {
       rgba(255, 255, 255, 0.5),
       rgba(255, 255, 255, 0.5)
     ),
-    url("/images/dog-pug-face.jpeg");
+    url("/images/cat_relax.jpeg");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;

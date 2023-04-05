@@ -13,7 +13,7 @@ function writeQuestions() {
   questionsRef.doc("Q2").set({
     question:
       "What should you do if you must keep your pet outside in a cold weather?",
-    imgSrc: "./images/dog-outside-winter.webp",
+    imgSrc: "./images/cat_winter.jpeg",
     a: "A subscription to Netflix",
     b: "A trampoline for exercise",
     c: "Ensure the shelter is off the ground and provides protection from wind, cold, and dampness",
