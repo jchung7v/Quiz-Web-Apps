@@ -13,11 +13,10 @@ body {
   font-family: "Noto Serif Lao", serif;
   font-family: "Roboto", sans-serif;
   background-color: #f8f9fa;
-  /* overflow: hidden; */
 }
 
 /* ---------------------- */
-/* INDEX                  */
+/* INDEX.HTML             */
 /* ---------------------- */
 
 .index-container {
@@ -40,32 +39,104 @@ body {
   cursor: pointer;
   font-size: 15pt;
   height: 44px;
-  /* line-height: 2.2; */
   outline: none;
   text-align: center;
   width: 50%;
   transition-duration: 500ms;
 }
 
-/* .index-landing{
-  padding-top: 100px;
-  margin-left: 80px;
-} */
+/* ---------------------- */
+/* NAVBAR HTML            */
+/* ---------------------- */
 
-/* #index-head{
-  font-weight: 100;
-  font-style: normal;
-  color: #2c365e;
+.navbar {
+  position: fixed;
+  height: 100;
+  width: 100%;
+  background-color: #2c365e;
 }
 
-#index-title{
-  font-weight: 600;
-  font-style: italic;
-} */
+.container-nav-logo-1 {
+  margin-left: 10px;
+}
+
+.container-nav-logo-2 {
+  margin-right: 10px;
+}
+
+/* ---------------------- */
+/* FOOTER HTML            */
+/* ---------------------- */
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #2c365e;
+  /* background-image: url("/images/Buttons/footerbackground.png"); */
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
+}
+
+#footer-btn-container a {
+  color: white;
+}
+
+div.fixed-bottom-box {
+  height: 80px;
+  background: white;
+}
+
+button.submit-btn {
+  height: 50px;
+  border-radius: 10px;
+}
+
+.container-nav {
+  background-color: aqua;
+}
+
+.btn-group {
+  display: flex;
+  margin-top: 100%;
+  justify-content: end;
+}
+
+.content {
+  padding-bottom: 60px;
+}
+
+.play-buttons {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-container {
+  padding-top: 100px;
+}
+
+/* ---------------------- */
+/* MAIN HTML              */
+/* ---------------------- */
 
 /* ---------------------- */
 /* Welcome Message        */
-/* Background Image       */
 /* ---------------------- */
 .welcome-message-container {
   justify-content: center;
@@ -105,8 +176,104 @@ body {
 }
 
 /* ---------------------- */
-/* Profile Button         */
+/* Start Button           */
 /* ---------------------- */
+#start-btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #4b8f8c;
+}
+
+#start-btn {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 20pt;
+  height: 60px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 60%;
+  transition-duration: 500ms;
+}
+
+#start-btn:hover,
+#start-btn:focus,
+#start-btn:active {
+  background-color: #2c365e;
+}
+
+/* ---------------------- */
+/* LEADERBOARD HTML       */
+/* ---------------------- */
+
+#leaderboard-section {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+#leaderboard {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#leaderboard li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #2c365e;
+}
+
+#leaderboard li:first-child {
+  font-weight: bold;
+}
+
+/* ---------------------- */
+/* FRIENDS HTML           */
+/* ---------------------- */
+
+#search-button {
+  background-color: #484d6d;
+  border-radius: 6px;
+  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
+    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15pt;
+  height: 44px;
+  /* line-height: 2.2; */
+  outline: none;
+  text-align: center;
+  width: 100%;
+  transition-duration: 500ms;
+}
+
+#search-button:hover,
+#search-button:focus,
+#search-button:active {
+  background-color: #2c365e;
+}
+
+/* ---------------------- */
+/* QUIZ HTML              */
+/* ---------------------- */
+
+/* ---------------------- */
+/* Quiz Container         */
+/* ---------------------- */
+#quiz-container {
+  background-color: white;
+  height: 100vh;
+  /* display: none; */
+}
 
 /* ---------------------- */
 /* Exit Button            */
@@ -129,15 +296,6 @@ body {
   outline: none;
   padding: 2px 4x 2px 4px;
   outline: none;
-}
-
-/* ---------------------- */
-/* Quiz Container         */
-/* ---------------------- */
-#quiz-container {
-  background-color: white;
-  height: 100vh;
-  /* display: none; */
 }
 
 /* ---------------------- */
@@ -315,58 +473,8 @@ body {
 }
 
 /* ---------------------- */
-/* Start Button           */
-/* ---------------------- */
-#start-btn-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #4b8f8c;
-}
-
-#start-btn {
-  background-color: #484d6d;
-  border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 20pt;
-  height: 60px;
-  /* line-height: 2.2; */
-  outline: none;
-  text-align: center;
-  width: 60%;
-  transition-duration: 500ms;
-}
-
-#start-btn:hover,
-#start-btn:focus,
-#start-btn:active {
-  background-color: #2c365e;
-}
-
-/* ---------------------- */
-/* Nav Bar                */
-/* ---------------------- */
-
-.navbar {
-  position: fixed;
-  height: 100;
-  width: 100%;
-  background-color: #2c365e;
-}
-
-.container-nav-logo-1 {
-  margin-left: 10px;
-}
-
-.container-nav-logo-2 {
-  margin-right: 10px;
-}
-/* ---------------------- */
-/* Profile &Setting       */
+/* PROFILE HTML           */
+/* SETTING HTML           */
 /* ---------------------- */
 
 #logout-button-container {
@@ -374,7 +482,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  /* background-color: #4b8f8c; */
 }
 
 #logout-button,
@@ -387,7 +494,6 @@ body {
   cursor: pointer;
   font-size: 15pt;
   height: 44px;
-  /* line-height: 2.2; */
   outline: none;
   text-align: center;
   width: 50%;
@@ -401,162 +507,8 @@ body {
 }
 
 /* ---------------------- */
-/* Footer                 */
-/* ---------------------- */
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #2c365e;
-  /* background-image: url("/images/Buttons/footerbackground.png"); */
-}
-
-a:link {
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-a:active {
-  text-decoration: none;
-}
-
-#footer-btn-container a {
-  color: white;
-}
-
-div.fixed-bottom-box {
-  height: 80px;
-  background: white;
-}
-
-button.submit-btn {
-  height: 50px;
-  border-radius: 10px;
-}
-
-.container-nav {
-  background-color: aqua;
-}
-
-.btn-group {
-  display: flex;
-  margin-top: 100%;
-  justify-content: end;
-}
-
-.content {
-  padding-bottom: 60px;
-}
-
-.play-buttons {
-  height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* body {
-  position: relative;
-}
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/images/dog-pug-face.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.7;
-  z-index: -1;
-} */
-
-.profile-container {
-  padding-top: 100px;
-}
-
-/*
-  Styles the leaderboard
-*/
-
-/* ---------------------- */
-/* LEADERBOARD            */
-/* ---------------------- */
-
-#leaderboard-section {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  padding: 20px;
-}
-
-#leaderboard {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#leaderboard li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  border-bottom: 1px solid #2c365e;
-}
-
-#leaderboard li:first-child {
-  font-weight: bold;
-}
-
-/* ---------------------- */
-/* LEADERBOARD            */
-/* ---------------------- */
-
-#search-button {
-  background-color: #484d6d;
-  border-radius: 6px;
-  box-shadow: rgba(50, 50, 93, 0.1) 0 0 0 1px inset,
-    rgba(50, 50, 93, 0.1) 0 2px 5px 0, rgba(0, 0, 0, 0.07) 0 1px 1px 0;
-  color: #fff;
-  cursor: pointer;
-  font-size: 15pt;
-  height: 44px;
-  /* line-height: 2.2; */
-  outline: none;
-  text-align: center;
-  width: 100%;
-  transition-duration: 500ms;
-}
-
-#search-button:hover,
-#search-button:focus,
-#search-button:active {
-  background-color: #2c365e;
-}
-
-/* ---------------------- */
 /* LOGIN                  */
 /* ---------------------- */
-
-/* body {
-  padding-top: 90px;
-} */
-
-/* #navbar-fake {
-  position: fixed;
-  height: 500;
-  width: 100%;
-  background-color: #2c365e;
-} */
 
 .panel-login {
   border-color: #ccc;
