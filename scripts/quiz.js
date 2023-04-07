@@ -165,6 +165,7 @@ function resetGame() {
   quizContainer.style.display = "none";
   scoreContainer.style.display = "none";
   afterGameContainer.style.display = "none";
+  // startQuiz();
 }
 
 // Check if user score already exist.
@@ -258,14 +259,3 @@ cancelButton.addEventListener("click", function () {
 exitConfirmButton.addEventListener("click", function () {
   window.location.href = "main.html";
 });
-
-// retrive the questions from Firestore and shuffle them randomly
-// questionsRef.get().then((snapshot) => {
-//   const questions = snapshot.docs.map((doc) => doc.data());
-//   shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-// });
-
-// Log-Out Button (Logged out go back to login.html)
-// Back Button (Not necessary)
-// Ending Congratulation
-// font change
