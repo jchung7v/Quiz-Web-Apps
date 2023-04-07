@@ -73,7 +73,7 @@ body {
 
 .welcome-message-container h1 {
   font-size: 25pt;
-  text-decoration-line: underline;
+  /* text-decoration-line: underline; */
   text-decoration-style: wavy;
   text-decoration-color: white;
   text-decoration-thickness: 5px;
