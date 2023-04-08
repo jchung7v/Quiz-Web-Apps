@@ -1,85 +1,150 @@
-function addFriends(event) {
+// Prevent default form behavior
+function handleEvent(event) {
   event.preventDefault();
+}
 
-  // Get search query from input field
-  var searchQuery = document.getElementById('search-input').value;
+// Get search query from input field
+function getSearchQuery() {
+  return document.getElementById('search-input').value;
+}
 
-  // Search Firestore for matching email data
-  db.collection('users').where('email', '==', searchQuery).get().then(function (querySnapshot) {
-    // Clear previous search results
-    document.getElementById('search-results').innerHTML = '';
+// Clear previous search results
+function clearSearchResults() {
+  document.getElementById('search-results').innerHTML = '';
+}
 
-    // Load email template HTML using AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'text/friendbutton.html');
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        var emailHtml = xhr.responseText;
+// Load email template HTML using AJAX
+function loadEmailTemplate(callback) {
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', 'text/friendbutton.html');
+  xhr.onload = function () {
+    if (xhr.status === 200) {
+      callback(xhr.responseText);
+    } else {
+      console.log('Request failed. Returned status of ' + xhr.status);
+    }
+  };
+  xhr.send();
+}
 
-        // Loop through matching email data and create new email cards
-        querySnapshot.forEach(function (doc) {
-          var userData = doc.data();
-          var userCard = document.createElement('div');
-          userCard.innerHTML = emailHtml;
+// Add email card to search results
+function addEmailCardToResults(userCard) {
+  document.getElementById('search-results').appendChild(userCard);
+}
 
-          // Set email card content
-          userCard.querySelector('.card-title').textContent = userData.name;
-          userCard.querySelector('.card-subtitle').textContent = userData.email;
-          userCard.querySelector('.card-text').textContent = userData.message;
+// Create a new email card
+function createEmailCard(emailHtml, userData) {
+  var userCard = document.createElement('div');
+  userCard.innerHTML = emailHtml;
 
-          // Add event listener to add friend button
-          var addFriendButton = userCard.querySelector('.add-friend-button');
+  // Set email card content
+  userCard.querySelector('.card-title').textContent = userData.name;
+  userCard.querySelector('.card-subtitle').textContent = userData.email;
+  userCard.querySelector('.card-text').textContent = userData.message;
 
-          // Retrieve the friend's email address and name
-          var friendEmail = userData.email;
-          var friendName = userData.name;
-          var friendPet = userData.pet;
-          var friendPetName = userData.petName;
+  return userCard;
+}
 
-          // Get the current user's document ID
-          var userId = firebase.auth().currentUser.uid;
-
-          // Search Firestore to check if the friend has already been added
-          db.collection('users').doc(userId).collection('friends').where('email', '==', friendEmail).get().then(function (querySnapshot) {
-            if (querySnapshot.empty) {
-              // Friend has not been added, enable the add friend button
-              addFriendButton.addEventListener('click', function (event) {
-                event.preventDefault();
-                // Add friend to the 'friends' subcollection in firestore,
-                //so each user will have their own set of unique friends. 
-                db.collection('users').doc(userId).collection('friends').add({
-                  name: friendName,
-                  email: friendEmail,
-                  pet: friendPet,
-                  petName: friendPetName,
-                  date_added: new Date()
-                }).then(function (docRef) {
-                  //Once button is clicked, change the button text to "Sent" and gray it out
-                  console.log('Friend added successfully!');
-                  addFriendButton.textContent = 'Sent';
-                  addFriendButton.disabled = true;
-
-                }).catch(function (error) {
-                  console.error('Error adding friend: ', error);
-                });
-              });
-            } else {
-              // Friend has already been added, grey out the add friend button
-              addFriendButton.disabled = true;
-              addFriendButton.textContent = 'Friend added';
-            }
-          });
-
-          // Add email card to search results
-          document.getElementById('search-results').appendChild(userCard);
-        });
-      } else {
-        console.log('Request failed.  Returned status of ' + xhr.status);
-      }
-    };
-    xhr.send();
+// Check if a friend has already been added
+function checkFriendAlreadyAdded(friendEmail, userId, callback) {
+  db.collection('users').doc(userId).collection('friends').where('email', '==', friendEmail).get().then(function (querySnapshot) {
+    callback(querySnapshot.empty);
   });
 }
+
+// Add a friend to Firestore
+function addFriendToFirestore(friendData, userId, successCallback, errorCallback) {
+  db.collection('users').doc(userId).collection('friends').add(friendData).then(successCallback).catch(errorCallback);
+}
+
+// Set up the "Add Friend" button by adding appropriate event listeners and
+// modifying the button text and state based on whether the friend has already been added
+function setupAddFriendButton(addFriendButton, friendData, userId) {
+  // Check if the friend has already been added to the user's friend list
+  checkFriendAlreadyAdded(friendData.email, userId, function (isFriendNotAdded) {
+    // If the friend has not been added yet
+    if (isFriendNotAdded) {
+      // Add a click event listener to the "Add Friend" button
+      addFriendButton.addEventListener('click', function (event) {
+        // Prevent default button behavior, such as form submission
+        handleEvent(event);
+
+        // Add the friend to the current user's Firestore friends collection
+        addFriendToFirestore(friendData, userId,
+          // Success callback function for adding the friend
+          function (docRef) {
+            console.log('Friend added successfully!');
+            addFriendButton.textContent = 'Sent';
+            addFriendButton.disabled = true;
+          },
+          // Error callback function for adding the friend
+          function (error) {
+            console.error('Error adding friend: ', error);
+          });
+      });
+    } else {
+      // If the friend has already been added, disable the "Add Friend" button and change the text
+      addFriendButton.disabled = true;
+      addFriendButton.textContent = 'Friend added';
+    }
+  });
+}
+
+// Process a Firestore user document, create an email card, set up the "Add Friend" button,
+// and add the email card to the search results section of the page
+function processUserDocument(doc, emailHtml, userId) {
+  // Extract user data from the Firestore document
+  var userData = doc.data();
+
+  // Create a new email card element using the email card template and user data
+  var userCard = createEmailCard(emailHtml, userData);
+
+  // Get the "Add Friend" button element within the email card
+  var addFriendButton = userCard.querySelector('.add-friend-button');
+
+  // Create a friend data object with the friend's email address, name, pet, and pet name
+  var friendData = {
+    email: userData.email,
+    name: userData.name,
+    pet: userData.pet,
+    petName: userData.petName
+  };
+
+  // Set up the "Add Friend" button with the friend data and current user ID
+  setupAddFriendButton(addFriendButton, friendData, userId);
+
+  // Add the newly created email card to the search results section of the page
+  addEmailCardToResults(userCard);
+}
+
+// Searches firebase to check if friend is added, if not add them
+function addFriends(event) {
+  // Prevent default form behavior
+  handleEvent(event);
+
+  // Get the user's search query from the input field
+  var searchQuery = getSearchQuery();
+
+  // Clear any previous search results displayed on the page
+  clearSearchResults();
+
+  // Search Firestore for users with email addresses matching the search query
+  db.collection('users').where('email', '==', searchQuery).get().then(function (querySnapshot) {
+    // Load the email card template HTML using an AJAX request
+    loadEmailTemplate(function (emailHtml) {
+      // Get the current user's Firestore document ID
+      var userId = firebase.auth().currentUser.uid;
+
+      // Loop through the Firestore documents with matching email addresses
+      querySnapshot.forEach(function (doc) {
+        // Process each user document and create an email card
+        processUserDocument(doc, emailHtml, userId);
+      });
+    });
+  });
+}
+
+
 
 // Add event listener to search button
 document.getElementById('search-button').addEventListener('click', addFriends);
