@@ -42,13 +42,47 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
+├── friends.html             # displays a users friends and they can add friends here
+├── leaderboard.html         # displays the top users with the highest score
+├── login.html               # users sign in or create an account
+├── html.html                # landing HTML file, this is what users see when you come to url
+├── profile.html             # users can edit their profile information
+├── quiz.html                # The game feature of the app, takes the user to a game room and they answer questions
+├── settings.html            # User can log out of their account. 
 └── README.md
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # Acknowledge source
+    /btw20and40.jpg          # google 
+    /btw40and60.jpg          # google
+    /btw60and80.jpg          # google
+    /cat_relax.jpeg          # google
+    /cat_winter.jpeg         # google
+    /dog-bathing.jpeg        # google
+    /dog-blanket.jpeg        # google 
+    /dog-drinking-water.jpeg # google
+    /dog-fill-black.svg      # google
+    /dog-fill.svg            # google
+    /dog-hot-weather.jpeg    # google 
+    /dog-in-car.jpeg         # google
+    /dog-in-winter.webp      # google
+    /dog-playing-ball.jpeg   # google
+    /dog-pug-face.jpeg       # google 
+    /dog-shave.jpeg          # google
+    /lessthan20.jpg          # google 
+    /morethan80.jpg          # google 
+    /ui-user-profile-outline.svg # google 
 
+
+├── .firebase                # Folder for firebase files
+    /.firebaserc             #
+    /404.html                #
+    /firebase.json           #
+    /firestore.indexes.json  #
+    firestore.rules          #
+    hosting..cache           #   
+ 
 
 ├── scripts                  # Folder for scripts
 
@@ -65,7 +99,13 @@ It has the following subfolders and files:
 
 
 ├── styles                   # Folder for styles
-    /styles.css                # 
+    /styles.css                # styleshet 
+
+├── text                     # Folder for navbar and footer to be loaded in by skeleton 
+    /footer.html             # the footer 
+    /friendbutton.html       # the friend button 
+    /nav_nothing.html        # navbar that does not contain any logos
+    /navbar.html             # navbar with logos                  
 
 
 
