@@ -105,13 +105,8 @@ It has the following subfolders and files:
     /styles.css                # styleshet 
 
 ├── text                     # Folder for navbar and footer to be loaded in by skeleton 
-    /footer.html             # the footer 
-    /friendbutton.html       # the friend button 
-    /nav_nothing.html        # navbar that does not contain any logos
-    /navbar.html             # navbar with logos                  
-
     /footer.html             # footer HTML file, this is a footbar
-    /friendbutton.html       # firendbutton HTML file, this a firend button
+    /friendbutton.html       # firendbutton HTML file, this a friend button
     /nav_nothing.html        # nav_nothing HTML file, this is a navbar without icons
     /navbar.html             # navbar HTML file, this is a navbar with icons
 
