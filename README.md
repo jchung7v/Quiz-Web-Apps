@@ -42,11 +42,13 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
-├── leaderboard.html         # leaderboard HTML file, this is where users see their ranks and compare scores for friendly competition
-├── login.html               # login HTML file, this is where users sign up or login
-├── main.html                # main HTML file, this is where users can start a quiz game
-├── quiz.html                # quiz HTML file, this is where users solve 10 questions
-├── settings.html            # setting HTML file, this is where users can logout
+├── friends.html             # displays a users friends and they can add friends here
+├── leaderboard.html         # displays the top users with the highest score
+├── login.html               # users sign in or create an account
+├── html.html                # landing HTML file, this is what users see when you come to url
+├── profile.html             # users can edit their profile information
+├── quiz.html                # The game feature of the app, takes the user to a game room and they answer questions
+├── settings.html            # User can log out of their account. 
 └── README.md
 
 It has the following subfolders and files:
@@ -56,27 +58,35 @@ It has the following subfolders and files:
 ├── text                     # Folder for navbar, footbar, and related pages
 
 ├── images                   # Folder for images
+    /btw20and40.jpg          # google 
+    /btw40and60.jpg          # google
+    /btw60and80.jpg          # google
+    /cat_relax.jpeg          # google
+    /cat_winter.jpeg         # google
+    /dog-bathing.jpeg        # google
+    /dog-blanket.jpeg        # google 
+    /dog-drinking-water.jpeg # google
+    /dog-fill-black.svg      # google
+    /dog-fill.svg            # google
+    /dog-hot-weather.jpeg    # google 
+    /dog-in-car.jpeg         # google
+    /dog-in-winter.webp      # google
+    /dog-playing-ball.jpeg   # google
+    /dog-pug-face.jpeg       # google 
+    /dog-shave.jpeg          # google
+    /lessthan20.jpg          # google 
+    /morethan80.jpg          # google 
+    /ui-user-profile-outline.svg # google 
 
-    /btw20and40.jpg          # An image of a dog face that changes based on users' performance
-    /btw40and60.jpg          # An image of a dog face that changes based on users' performance
-    /btw50nd80.jpg           # An image of a dog face that changes based on users' performance
-    /cat_relax.jpeg          # An image used in a quiz
-    /cat_winter.jpeg         # An image used in a quiz
-    /dog-bathing.jpeg        # An image used in a quiz
-    /dog-blanket.jpeg        # An image used in a quiz
-    /dog-drinking-water.jpeg # An image used in a quiz
-    /dog-fill-black.svg      # Logo
-    /dog-fill.svg            # Logo
-    /dog-hot-weather.jpeg    # An image used in a quiz
-    /dog-in-car.jpeg         # An image used in a quiz
-    /dog-in-winter.webp      # An image used in a quiz
-    /dog-playing-ball.jpg    # An image used in a quiz
-    /dog-pug.face.jpeg       # An image used in a quiz
-    /dog-shave.jpeg          # An image used in a quiz
-    /dog-walking-winter.jpeg # An image used in a quiz
-    /lessthan20.jpg          # An image of a dog face that changes based on users' performance
-    /morethan80.jpg          # An image of a dog face that changes based on users' performance
-    /ui-user-profile....svg  # User Icon
+
+├── .firebase                # Folder for firebase files
+    /.firebaserc             #
+    /404.html                #
+    /firebase.json           #
+    /firestore.indexes.json  #
+    firestore.rules          #
+    hosting..cache           #   
+ 
 
 ├── scripts                  # Folder for scripts
 
@@ -92,9 +102,13 @@ It has the following subfolders and files:
     /skeleton.js             # skeleton JS file, this loads navbar, footer, and other things into html doc
 
 ├── styles                   # Folder for styles
-    /styles.css              # css file that associated with all html files
+    /styles.css                # styleshet 
 
-├── text                     # Folder navbar, footbar and related files
+├── text                     # Folder for navbar and footer to be loaded in by skeleton 
+    /footer.html             # the footer 
+    /friendbutton.html       # the friend button 
+    /nav_nothing.html        # navbar that does not contain any logos
+    /navbar.html             # navbar with logos                  
 
     /footer.html             # footer HTML file, this is a footbar
     /friendbutton.html       # firendbutton HTML file, this a firend button
