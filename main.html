@@ -1,68 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>temPETure</title>
 
-<head>
-  <title>temPETure</title>
+    <!------------------------>
+    <!-- Required meta tags -->
+    <!------------------------>
+    <meta name="temPETure" content="My 1800 App" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!------------------------>
-  <!-- Required meta tags -->
-  <!------------------------>
-  <meta name="temPETure" content="My 1800 App" />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap Library CSS CDN go here -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Serif+Lao&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap Library CSS CDN go here -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Serif+Lao&family=Roboto&display=swap"
-    rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
 
-  <!-------------------------------------------------------->
-  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-  <!-------------------------------------------------------->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+    <!-- Link to styles of your own -->
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
 
-  <!-- Link to styles of your own -->
-  <link rel="stylesheet" href="/styles/style.css" />
-</head>
+  <body>
+    <!-- our own navbar goes here -->
+    <nav class="navbar" id="navbarPlaceholder"></nav>
 
-<body>
-  <!-- our own navbar goes here -->
-  <nav class="navbar" id="navbarPlaceholder"></nav>
-
-  <!-- the body of your page goes here -->
-  <!-- stuff -->
-  <div id="background-img-container2">
-    <div class="d-flex justify-content-center welcome-message-container">
-      <h1 class="align-items-center">
-        Welcome, <span id="name-goes-here">Name</span>
-      </h1>
+    <!-- the body of your page goes here -->
+    <!-- stuff -->
+    <div id="background-img-container2">
+      <div class="d-flex justify-content-center welcome-message-container">
+        <h1 class="align-items-center">
+          Welcome, <span id="name-goes-here">Name</span>
+        </h1>
+      </div>
+      <div class="justify-content-around play-buttons">
+        <button type="button-play" class="btn" id="start-btn">
+          Start Quiz
+        </button>
+      </div>
     </div>
-    <div class="justify-content-around play-buttons">
-      <button type="button-play" class="btn" id="start-btn">
-        Start Quiz
-      </button>
-    </div>
-  </div>
 
-  <!-- our own footer goes here-->
-  <footer class="footer" id="footerPlaceholder"></footer>
+    <!-- our own footer goes here-->
+    <footer class="footer" id="footerPlaceholder"></footer>
 
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
-  <script src="./scripts/firebaseAPI_BBY27.js"></script>
-  <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
-</body>
-
+    <!---------------------------------------------->
+    <!-- Your own JavaScript functions go here    -->
+    <!---------------------------------------------->
+    <script src="./scripts/firebaseAPI_BBY27.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+  </body>
 </html>
